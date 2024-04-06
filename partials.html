@@ -1,0 +1,28 @@
+<!-- Development -->
+<div class="bg-gray-50">
+    <div class="mx-auto px-6 py-24 space-y-12 container">
+        <div class="lg:text-center space-y-4">
+            <p class="text-3xl sm:text-4xl text-gray-900 font-medium tracking-tight">Etapas do desenvolvimento</p>
+            <p class="max-w-3xl text-gray-600 leading-relaxed tracking-wide mx-auto">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
+        </div>
+        <div class="flex flex-wrap">
+            <template x-for="development in developments" hidden>
+                <div class="md:w-full lg:w-1/2 xl:w-1/4 border-l border-gray-300 border-opacity-60 p-8">
+                    <div class="w-fit text-indigo-600 border border-indigo-600 rounded-full p-1.5">
+                        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
+                    </div>
+                    <p class="text-lg sm:text-xl text-gray-900 font-medium tracking-wide mt-4 mb-2" x-text="development.title"></p>
+                    <p class="text-sm text-gray-600 leading-relaxed tracking-wide mb-4" x-text="development.description"></p>
+                    <div class="flex items-center gap-x-1">
+                        <p class="text-sm text-indigo-600 font-medium tracking-wide">Ver Detalhes</p>
+                        <svg class="text-indigo-600 mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
