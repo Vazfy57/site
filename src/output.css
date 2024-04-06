@@ -1122,6 +1122,11 @@ video {
   gap: 2rem;
 }
 
+.gap-x-1 {
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem;
+}
+
 .gap-x-12 {
   -moz-column-gap: 3rem;
        column-gap: 3rem;
