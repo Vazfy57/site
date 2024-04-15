@@ -10,15 +10,19 @@ document.addEventListener('alpine:init', () => {
                 'description': 'A ferramenta definitiva para entender o impacto de suas estratégias de marketing. Identifique as mídias mais eficazes, otimize seus investimentos e maximize o retorno sobre seus esforços',
                 'advantages': [
                     {
-                        'title': '1 - Quais problemas de negócio a solução resolve?',
+                        'title': 'Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                     {
-                        'title': '1 - Quais problemas de negócio a solução resolve?',
+                        'title': 'Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                     {
-                        'title': '1 - Quais problemas de negócio a solução resolve?',
+                        'title': 'Quais problemas de negócio a solução resolve?',
+                        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
+                    },
+                    {
+                        'title': 'Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                 ],
@@ -43,18 +47,18 @@ document.addEventListener('alpine:init', () => {
             },
             {
                 'title': 'PriceFy',
-                'description': 'Através de técnicas de aprendizado de máquina avançadas, nossa solução oferece estimativas precisas, levando em consideração fatores como demanda, custos e preferências do cliente',
+                'description': 'Nossa solução de pontuação para leads avalia e classifica com base em seu potencial de conversão. Identifique os leads mais promissores, personalize suas estratégia e aumente suas taxas de conversão',
                 'advantages': [
                     {
-                        'title': '3 - Quais problemas de negócio a solução resolve?',
+                        'title': '2 - Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                     {
-                        'title': '3 - Quais problemas de negócio a solução resolve?',
+                        'title': '2 - Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                     {
-                        'title': '3 - Quais problemas de negócio a solução resolve?',
+                        'title': '2 - Quais problemas de negócio a solução resolve?',
                         'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio reprehenderit consectetur vero velit praesentium numquam non. Nisi saepe consequuntur delectus molestias quaerat assumenda fuga fugiat? Tenetur voluptatibus sunt voluptatem amet.',
                     },
                 ],
