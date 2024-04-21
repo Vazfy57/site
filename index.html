@@ -24,127 +24,109 @@
         }
     </style>
 </head>
-<body x-data="alpine">
+<body x-data="alpine" id="home">
 
-    <!-- Home -->
-    <div class="relative" id="#home">
+    <!-- Navbar -->
+    <div class="max-w-7xl mx-4 xl:mx-auto my-8">
 
-        <div class="max-xl:hidden absolute inset-x-0 top-[calc(100%-50rem)] transform-gpu overflow-hidden blur-3xl -z-10">
-            <div class="relative right-[calc(50%-48rem)] w-[72rem] -translate-x-1/2 aspect-[1155/678] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);"></div>
+        <!-- Desktop -->
+        <div class="flex items-center justify-between">
+            <a href="#home">
+                <img class="w-24" src="static/logo.png" loading="lazy" alt="">
+            </a>
+            <div class="max-lg:hidden flex items-center gap-x-12">
+                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#solutions">Soluções</a>
+                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
+                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#blog">Blog</a>
+                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#faq">Dúvidas</a>
+            </div>
+            <a class="max-lg:hidden flex items-center text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2 gap-2" href="">
+                Entrar
+                <svg class="size-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <button class="lg:hidden" @click="sidebar = true">
+                <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+                </svg>
+            </button>
         </div>
-        
-        <div class="max-xl:hidden absolute inset-x-0 top-[calc(100%-32rem)] transform-gpu overflow-hidden blur-3xl -z-10">
-            <div class="relative left-[calc(50%+36rem)] w-[72rem] -translate-x-1/2 aspect-[1155/678] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);"></div>
-        </div>
 
-        <!-- Navbar -->
-        <div class="max-w-7xl mx-4 xl:mx-auto my-8">
-
-            <!-- Desktop -->
-            <div class="flex items-center justify-between">
-                <a href="#home">
-                    <img class="w-24" src="static/logo.png" loading="lazy" alt="">
-                </a>
-                <div class="max-lg:hidden flex items-center gap-x-12">
-                    <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#solutions">Soluções</a>
-                    <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
-                    <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#blog">Blog</a>
-                    <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#faq">Dúvidas</a>
-                </div>
-                <a class="max-lg:hidden flex items-center text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2 gap-2" href="">
+        <!-- Mobile -->
+        <div :class="{ '-translate-x-64': sidebar }" class="fixed top-0 -right-64 z-50 w-64 h-full bg-white duration-500 px-4 py-8 space-y-3">
+            <div class="flex justify-between items-center">
+                <p class="text-3xl text-gray-900 font-semibold">Menu</p>
+                <button @click="sidebar = false">
+                    <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col">
+                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#solutions" @click="sidebar = false">Soluções</a>
+                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#development" @click="sidebar = false">Desenvolvimento</a>
+                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#blog" @click="sidebar = false">Blog</a>
+                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#faq" @click="sidebar = false">Dúvidas</a>
+                <div class="h-0 border-b my-3"></div>
+                <a class="group flex items-center text-sm text-gray-600 font-medium tracking-wide py-3 gap-2" href="">
                     Entrar
                     <svg class="size-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
                         <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
                     </svg>
                 </a>
-                <button class="lg:hidden" @click="sidebar = true">
-                    <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                    </svg>
-                </button>
             </div>
-
-            <!-- Mobile -->
-            <div :class="{ '-translate-x-64': sidebar }" class="fixed top-0 -right-64 z-50 w-64 h-full bg-white duration-500 px-4 py-8 space-y-3">
-                <div class="flex justify-between items-center">
-                    <p class="text-3xl text-gray-900 font-semibold">Menu</p>
-                    <button @click="sidebar = false">
-                        <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-col">
-                    <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#solutions" @click="sidebar = false">Soluções</a>
-                    <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#development" @click="sidebar = false">Desenvolvimento</a>
-                    <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#blog" @click="sidebar = false">Blog</a>
-                    <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#faq" @click="sidebar = false">Dúvidas</a>
-                    <div class="h-0 border-b my-3"></div>
-                    <a class="group flex items-center text-sm text-gray-600 font-medium tracking-wide py-3 gap-2" href="">
-                        Entrar
-                        <svg class="size-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
-                            <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pelicula -->
-            <div class="fixed inset-0 z-40 size-full bg-black bg-opacity-50" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
-        
         </div>
 
-        <!-- Texto -->
-        <div class="max-w-7xl mx-4 xl:mx-auto">
+        <!-- Pelicula -->
+        <div class="fixed inset-0 z-40 size-full bg-black bg-opacity-50" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
+    
+    </div>
 
-            <div class="text-center mt-24 lg:mt-40 space-y-6">
-                <p class="max-w-5xl text-5xl md:text-6xl xl:text-7xl text-gray-900 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
-                <p class="max-w-2xl md:text-lg text-gray-600 font-medium tracking-wide leading-relaxed mx-auto">Ofereça praticidade com apenas um clique e obtenha toda uma análise de dados sobre sua empresa em tempo real com baixo custo</p>
-            </div>
-    
-            <div class="flex items-center justify-center mt-10 gap-x-6">
-                <button class="bg-indigo-600 hover:bg-indigo-500 duration-300 rounded-full px-4 py-2" @click="contact_modal = true">
-                    <p class="text-sm text-white font-semibold tracking-wide">Começar Agora</p>
-                </button>
-                <a class="shadow-sm border border-gray-300 hover:bg-gray-100 duration-300 rounded-full px-4 py-2" href="#solutions">
-                    <p class="text-sm text-gray-900 font-medium tracking-wide">Aprender Mais</p>
-                </a>
-            </div>
-    
-            <div class="mt-32 lg:mt-40 mb-8 space-y-8">
-                <p class="text-gray-600 text-center font-medium tracking-wide">Empresas que confiam em nosso trabalho</p>
-                <div class="flex sm:flex-col lg:flex-row items-center justify-center gap-16">
-                    <div class="flex flex-col sm:flex-row items-center gap-16">
-                        <img class="w-24" src="static/empresa1.png" loading="lazy">
-                        <img class="w-12" src="static/empresa2.png" loading="lazy">
-                        <img class="w-20" src="static/empresa3.png" loading="lazy">
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-center gap-16">
-                        <img class="w-12" src="static/empresa4.png" loading="lazy">
-                        <img class="w-16" src="static/empresa5.png" loading="lazy">
-                        <img class="w-24" src="static/empresa6.png" loading="lazy">
-                    </div>
+    <!-- Texto -->
+    <div class="max-w-7xl mx-4 xl:mx-auto">
+
+        <div class="text-center mt-24 lg:mt-40 space-y-6">
+            <p class="max-w-5xl text-5xl md:text-6xl xl:text-7xl text-gray-900 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
+            <p class="max-w-2xl md:text-lg text-gray-600 font-medium tracking-wide mx-auto">Ofereça praticidade com apenas um clique e obtenha toda uma análise de dados sobre sua empresa em tempo real com baixo custo</p>
+        </div>
+
+        <div class="flex items-center justify-center mt-10 gap-x-6">
+            <button class="bg-indigo-600 hover:bg-indigo-500 duration-300 rounded-full px-4 py-2" @click="contact_modal = true">
+                <p class="text-sm text-white font-semibold tracking-wide">Começar Agora</p>
+            </button>
+            <a class="shadow-sm border border-gray-300 hover:bg-gray-100 duration-300 rounded-full px-4 py-2" href="#solutions">
+                <p class="text-sm text-gray-900 font-medium tracking-wide">Aprender Mais</p>
+            </a>
+        </div>
+
+        <div class="mt-32 lg:mt-48 mb-8 space-y-8">
+            <p class="text-gray-600 text-center font-medium tracking-wide">Parceiros que confiam em nosso trabalho</p>
+            <div class="flex sm:flex-col lg:flex-row items-center justify-center gap-16">
+                <div class="flex flex-col sm:flex-row items-center gap-16">
+                    <img class="w-24" src="static/empresa1.png" loading="lazy" alt="">
+                    <img class="w-12" src="static/empresa2.png" loading="lazy" alt="">
+                    <img class="w-20" src="static/empresa3.png" loading="lazy" alt="">
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-16">
+                    <img class="w-12" src="static/empresa4.png" loading="lazy" alt="">
+                    <img class="w-16" src="static/empresa5.png" loading="lazy" alt="">
+                    <img class="w-24" src="static/empresa6.png" loading="lazy" alt="">
                 </div>
             </div>
-    
         </div>
 
     </div>
 
     <!-- Solutions -->
     <div class="relative overflow-hidden py-20 lg:py-32" id="solutions">
-
         <img class="absolute left-1/2 bottom-0 max-w-none h-full translate-x-[-50%] -z-10" src="static/background.jpg" loading="lazy" width="2245" height="1636">
-
-        <div class="container mx-auto max-sm:px-4 space-y-12 lg:space-y-16">
-
-            <div class="lg:text-center space-y-4 lg:space-y-6">
+        <div class="container mx-auto px-4 space-y-16">
+            <div class="max-w-5xl xl:text-center xl:mx-auto space-y-4">
                 <p class="text-3xl md:text-4xl xl:text-5xl text-white font-medium tracking-tight">Todas as soluções que sua empresa necessita</p>
-                <p class="md:text-lg text-white tracking-wide leading-relaxed">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
+                <p class="sm:text-lg text-white leading-relaxed">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
             </div>
-
             <div class="grid grid-cols-1 xl:grid-cols-5 items-center">
-
                 <div class="max-xl:hidden flex flex-col col-span-2">
                     <template x-for="intelligence in intelligences" hidden>
                         <button
@@ -156,7 +138,6 @@
                         </button>
                     </template>
                 </div>
-
                 <div class="xl:hidden flex flex-col rounded-t-xl bg-white/20 p-4 space-y-4">
                     <div class="overflow-auto whitespace-nowrap py-4 space-x-4">
                         <template x-for="intelligence in intelligences" hidden>
@@ -170,7 +151,6 @@
                     </div>
                     <p class="text-white tracking-wide leading-relaxed" x-text="selected_intelligence.description"></p>
                 </div>
-
                 <div class="col-span-3 min-h-full h-[800px] max-xl:rounded-t-none rounded-xl bg-white px-8 py-16 space-y-16 overflow-auto">
                     <template x-for="advantage in selected_intelligence.advantages" hidden>
                         <div class="space-y-2">
@@ -179,221 +159,77 @@
                         </div>
                     </template>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!-- Development -->
-    <div class="pb-14 pt-20 sm:pb-20 sm:pt-32 lg:pb-32" id="development">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl md:text-center">
-                <h2 class="text-3xl tracking-tight text-gray-900 font-medium sm:text-4xl">Etapas do desenvolvimento</h2>
-                <p class="mt-4 text-lg tracking-tight text-gray-600">Because you’d probably be a little confused if we
-                    suggested you complicate your everyday business tasks instead.</p>
-            </div>
-            <div class="-mx-4 mt-20 flex flex-col gap-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden">
-                <div>
-                    <div class="mx-auto max-w-2xl">
-                        <div class="w-9 rounded-lg bg-blue-600"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <defs>
-                                    <linearGradient id=":R2menla:" x1="11.5" y1="18" x2="36" y2="15.5"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop offset=".194" stop-color="#fff"></stop>
-                                        <stop offset="1" stop-color="#6692F1"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5" stroke="url(#:R2menla:)" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Reporting</h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Stay on top of things with always up-to-date
-                            reporting features.</p>
-                        <p class="mt-4 text-sm text-gray-600">We talked about reporting in the section above but we
-                            needed three items here, so mentioning it one more time for posterity.</p>
-                    </div>
-                    <div class="relative mt-10 pb-10">
-                        <div class="absolute -inset-x-4 bottom-0 top-8 bg-slate-200 sm:-inset-x-6"></div>
-                        <div
-                            class="relative mx-auto w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="mx-auto max-w-2xl">
-                        <div class="w-9 rounded-lg bg-blue-600"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <path opacity=".5"
-                                    d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path opacity=".3"
-                                    d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Inventory</h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Never lose track of what’s in stock with
-                            accurate inventory tracking.</p>
-                        <p class="mt-4 text-sm text-gray-600">We don’t offer this as part of our software but that
-                            statement is inarguably true. Accurate inventory tracking would help you for sure.</p>
-                    </div>
-                    <div class="relative mt-10 pb-10">
-                        <div class="absolute -inset-x-4 bottom-0 top-8 bg-slate-200 sm:-inset-x-6"></div>
-                        <div
-                            class="relative mx-auto w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="mx-auto max-w-2xl">
-                        <div class="w-9 rounded-lg bg-blue-600"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <path opacity=".5"
-                                    d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
-                                    fill="#fff"></path>
-                                <path
-                                    d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600">Contacts</h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Organize all of your contacts, service
-                            providers, and invoices in one place.</p>
-                        <p class="mt-4 text-sm text-gray-600">This also isn’t actually a feature, it’s just some
-                            friendly advice. We definitely recommend that you do this, you’ll feel really organized and
-                            professional.</p>
-                    </div>
-                    <div class="relative mt-10 pb-10">
-                        <div class="absolute -inset-x-4 bottom-0 top-8 bg-slate-200 sm:-inset-x-6"></div>
-                        <div
-                            class="relative mx-auto w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                            <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                class="w-full" style="color:transparent" sizes="52.75rem"
-                                srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75 3840w"
-                                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden lg:mt-20 lg:block">
-                <div class="grid grid-cols-3 gap-x-8" role="tablist" aria-orientation="horizontal">
-                    <div class="relative">
-                        <div class="w-9 rounded-lg bg-blue-600"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <defs>
-                                    <linearGradient id=":Rarenla:" x1="11.5" y1="18" x2="36" y2="15.5"
-                                        gradientUnits="userSpaceOnUse">
-                                        <stop offset=".194" stop-color="#fff"></stop>
-                                        <stop offset="1" stop-color="#6692F1"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5" stroke="url(#:Rarenla:)" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-blue-600"><button class="ui-not-focus-visible:outline-none"
-                                id="headlessui-tabs-tab-:Rirenla:" role="tab" type="button" aria-selected="true"
-                                tabindex="0" data-headlessui-state="selected"
-                                aria-controls="headlessui-tabs-panel-:Rbbenla:"><span
-                                    class="absolute inset-0"></span>Reporting</button></h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Stay on top of things with always up-to-date
-                            reporting features.</p>
-                        <p class="mt-4 text-sm text-gray-600">We talked about reporting in the section above but we
-                            needed three items here, so mentioning it one more time for posterity.</p>
-                    </div>
-                    <div class="relative opacity-75 hover:opacity-100">
-                        <div class="w-9 rounded-lg bg-slate-500"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <path opacity=".5"
-                                    d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path opacity=".3"
-                                    d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                                <path d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-gray-600"><button
-                                class="ui-not-focus-visible:outline-none" id="headlessui-tabs-tab-:Rkrenla:" role="tab"
-                                type="button" aria-selected="false" tabindex="-1" data-headlessui-state=""
-                                aria-controls="headlessui-tabs-panel-:Rjbenla:"><span
-                                    class="absolute inset-0"></span>Inventory</button></h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Never lose track of what’s in stock with
-                            accurate inventory tracking.</p>
-                        <p class="mt-4 text-sm text-gray-600">We don’t offer this as part of our software but that
-                            statement is inarguably true. Accurate inventory tracking would help you for sure.</p>
-                    </div>
-                    <div class="relative opacity-75 hover:opacity-100">
-                        <div class="w-9 rounded-lg bg-slate-500"><svg aria-hidden="true" class="h-9 w-9" fill="none">
-                                <path opacity=".5"
-                                    d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
-                                    fill="#fff"></path>
-                                <path
-                                    d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
-                                    fill="#fff"></path>
-                            </svg></div>
-                        <h3 class="mt-6 text-sm font-medium text-gray-600"><button
-                                class="ui-not-focus-visible:outline-none" id="headlessui-tabs-tab-:Rmrenla:" role="tab"
-                                type="button" aria-selected="false" tabindex="-1" data-headlessui-state=""
-                                aria-controls="headlessui-tabs-panel-:Rrbenla:"><span
-                                    class="absolute inset-0"></span>Contacts</button></h3>
-                        <p class="mt-2 font-display text-xl text-gray-900">Organize all of your contacts, service
-                            providers, and invoices in one place.</p>
-                        <p class="mt-4 text-sm text-gray-600">This also isn’t actually a feature, it’s just some
-                            friendly advice. We definitely recommend that you do this, you’ll feel really organized and
-                            professional.</p>
-                    </div>
-                </div>
-                <div class="relative mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 py-16 xl:px-16">
-                    <div class="-mx-5 flex">
-                        <div class="px-5 transition duration-500 ease-in-out ui-not-focus-visible:outline-none"
-                            style="transform:translateX(-0%)" aria-hidden="false" id="headlessui-tabs-panel-:Rbbenla:"
-                            role="tabpanel" tabindex="0" data-headlessui-state="selected"
-                            aria-labelledby="headlessui-tabs-tab-:Rirenla:">
-                            <div
-                                class="w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                    class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&amp;w=3840&amp;q=75">
-                            </div>
-                        </div>
-                        <div class="px-5 transition duration-500 ease-in-out ui-not-focus-visible:outline-none opacity-60"
-                            style="transform:translateX(-0%)" aria-hidden="true" id="headlessui-tabs-panel-:Rjbenla:"
-                            role="tabpanel" tabindex="-1" data-headlessui-state=""
-                            aria-labelledby="headlessui-tabs-tab-:Rkrenla:">
-                            <div
-                                class="w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                    class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&amp;w=3840&amp;q=75">
-                            </div>
-                        </div>
-                        <div class="px-5 transition duration-500 ease-in-out ui-not-focus-visible:outline-none opacity-60"
-                            style="transform:translateX(-0%)" aria-hidden="true" id="headlessui-tabs-panel-:Rrbenla:"
-                            role="tabpanel" tabindex="-1" data-headlessui-state=""
-                            aria-labelledby="headlessui-tabs-tab-:Rmrenla:">
-                            <div
-                                class="w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                                <img alt="" loading="lazy" width="1688" height="856" decoding="async" data-nimg="1"
-                                    class="w-full" style="color:transparent" sizes="52.75rem"
-                                    srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75 3840w"
-                                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&amp;w=3840&amp;q=75">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-slate-900/10">
-                    </div>
-                </div>
-            </div>
+    <section class="container mx-auto px-4 py-20 lg:py-32 space-y-16">
+        <div class="max-w-5xl xl:text-center xl:mx-auto space-y-4">
+            <h2 class="text-3xl sm:text-4xl text-gray-900 font-medium tracking-tight">Etapas do desenvolvimento</h2>
+            <p class="sm:text-lg text-gray-600 leading-relaxed">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid</p>
         </div>
-    </div>
+        <div class="flex flex-wrap w-full">
+            <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
+                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4 space-y-1">
+                        <h3 class="text-lg text-gray-900 font-medium">Negócio</h3>
+                        <p class="text-gray-600 tracking-wide leading-relaxed">Envolve a identificação de problemas e oportunidades, o estabelecimento de indicadores claros e a definição de critérios</p>
+                    </div>
+                </div>
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
+                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4 space-y-1">
+                        <h3 class="text-lg text-gray-900 font-medium">Dados</h3>
+                        <p class="text-gray-600 tracking-wide leading-relaxed">Preparação dos dados para a modelagem, envolvendo limpeza, transformação, seleção e integração</p>
+                    </div>
+                </div>
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
+                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="3"></circle>
+                            <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4 space-y-1">
+                        <h3 class="text-lg text-gray-900 font-medium">Aprendizado</h3>
+                        <p class="text-gray-600 tracking-wide leading-relaxed">Treinamento e a validação dos modelos de machine learning são aplicados para obter o melhor desempenho possível</p>
+                    </div>
+                </div>
+                <div class="flex relative">
+                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
+                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                            <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4 space-y-1">
+                        <h3 class="text-lg text-gray-900 font-medium">Deploy</h3>
+                        <p class="text-gray-600 tracking-wide leading-relaxed">Pode-se envolver a implementação direto em um sistema, endpoints ou outras formas de utilizar os resultados</p>
+                    </div>
+                </div>
+            </div>
+            <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://dummyimage.com/1200x500" alt="step">
+        </div>
+    </section>
 
     <!-- CTA -->
     <div class="relative overflow-hidden py-32">
@@ -436,8 +272,8 @@
     </div>
 
     <div class="relative overflow-hidden">
-    
-        <img class="absolute size-full -z-10" src="static/background-faq.jpg">
+
+        <img class="absolute size-full -z-10" src="static/background-faq.jpg" alt="">
 
         <!-- Faq -->
         <div class="max-w-7xl mx-auto max-xl:px-6 py-20 sm:py-32 space-y-16" id="faq">
@@ -475,10 +311,10 @@
             </div>
     
         </div>
-    
+
         <!-- Footer -->
         <div class="max-w-7xl divide-y mx-auto max-sm:px-6 space-y-16">
-    
+
             <div class="flex flex-col items-center gap-y-6">
                 <img class="h-10" src="static/logo.png" loading="lazy">
                 <div class="flex max-sm:flex-col max-sm:gap-y-6 sm:gap-x-6">
@@ -492,7 +328,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="flex max-md:flex-col-reverse items-center justify-between py-12 gap-y-6">
                 <p class="text-sm text-gray-600 text-center">Copyright © 2024 Vazfy. Todos os direitos reservados</p>
                 <div class="flex items-center gap-x-6">
@@ -518,14 +354,14 @@
                     </a>
                 </div>
             </div>
-    
+
         </div>
 
     </div>
 
-    <!-- Modal para Contato --> <!-- OK -->
-    <div class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50" x-show="contact_modal" x-transition.opacity.duration.500ms x-cloak>
-        <div class="max-w-[90%] sm:max-w-[448px] bg-white rounded-lg p-8 space-y-6" @mousedown.outside="contact_modal = false">
+    <!-- Modal para Contato -->
+    <div class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50" x-show="contact_modal" x-transition.opacity.duration.500ms x-cloak>
+        <div class="max-w-[416px] bg-white rounded p-6 mx-4 space-y-6" @mousedown.outside="contact_modal = false">
             <div class="text-center space-y-1">
                 <p class="text-2xl text-gray-900 font-semibold">Informe seus dados</p>
                 <p class="text-gray-600 font-medium">Vamos utilizá-los para avaliar seu perfil e entrar em contato o mais rápido possível</p>
