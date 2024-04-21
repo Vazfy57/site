@@ -28,8 +28,6 @@
 
     <!-- Navbar -->
     <div class="max-w-7xl mx-4 xl:mx-auto my-8">
-
-        <!-- Desktop -->
         <div class="flex items-center justify-between">
             <a href="#home">
                 <img class="w-24" src="static/logo.png" loading="lazy" alt="">
@@ -52,8 +50,6 @@
                 </svg>
             </button>
         </div>
-
-        <!-- Mobile -->
         <div :class="{ '-translate-x-64': sidebar }" class="fixed top-0 -right-64 z-50 w-64 h-full bg-white duration-500 px-4 py-8 space-y-3">
             <div class="flex justify-between items-center">
                 <p class="text-3xl text-gray-900 font-semibold">Menu</p>
@@ -77,20 +73,15 @@
                 </a>
             </div>
         </div>
-
-        <!-- Pelicula -->
         <div class="fixed inset-0 z-40 size-full bg-black bg-opacity-50" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
-    
     </div>
 
     <!-- Texto -->
     <div class="max-w-7xl mx-4 xl:mx-auto">
-
         <div class="text-center mt-24 lg:mt-40 space-y-6">
             <p class="max-w-5xl text-5xl md:text-6xl xl:text-7xl text-gray-900 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
-            <p class="max-w-2xl md:text-lg text-gray-600 font-medium tracking-wide mx-auto">Ofereça praticidade com apenas um clique e obtenha toda uma análise de dados sobre sua empresa em tempo real com baixo custo</p>
+            <p class="max-w-2xl sm:text-lg text-gray-600 leading-relaxed mx-auto">Ofereça praticidade com apenas um clique e obtenha toda uma análise de dados sobre sua empresa em tempo real com baixo custo</p>
         </div>
-
         <div class="flex items-center justify-center mt-10 gap-x-6">
             <button class="bg-indigo-600 hover:bg-indigo-500 duration-300 rounded-full px-4 py-2" @click="contact_modal = true">
                 <p class="text-sm text-white font-semibold tracking-wide">Começar Agora</p>
@@ -99,9 +90,8 @@
                 <p class="text-sm text-gray-900 font-medium tracking-wide">Aprender Mais</p>
             </a>
         </div>
-
         <div class="mt-32 lg:mt-48 mb-8 space-y-8">
-            <p class="text-gray-600 text-center font-medium tracking-wide">Parceiros que confiam em nosso trabalho</p>
+            <p class="text-gray-600 text-center leading-relaxed">Parceiros que confiam em nosso trabalho</p>
             <div class="flex sm:flex-col lg:flex-row items-center justify-center gap-16">
                 <div class="flex flex-col sm:flex-row items-center gap-16">
                     <img class="w-24" src="static/empresa1.png" loading="lazy" alt="">
@@ -115,11 +105,10 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Solutions -->
-    <div class="relative overflow-hidden py-20 lg:py-32" id="solutions">
+    <section class="relative overflow-hidden py-20 lg:py-32" id="solutions">
         <img class="absolute left-1/2 bottom-0 max-w-none h-full translate-x-[-50%] -z-10" src="static/background.jpg" loading="lazy" width="2245" height="1636">
         <div class="container mx-auto px-4 space-y-12 sm:space-y-20">
             <div class="max-w-5xl xl:text-center xl:mx-auto space-y-4">
@@ -161,7 +150,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Development -->
     <section class="container mx-auto px-4 py-20 lg:py-32 space-y-12 sm:space-y-20">
@@ -250,7 +239,7 @@
     </div>
 
     <!-- Blog -->
-    <div class="container mx-auto max-xl:px-6 py-20 sm:py-32 space-y-16" id="blog">
+    <section class="container mx-auto max-xl:px-6 py-20 sm:py-32 space-y-16" id="blog">
 
         <div class="lg:text-center space-y-4">
             <p class="text-3xl sm:text-4xl lg:text-5xl text-gray-900 font-medium tracking-tight">Acompanhe nosso blog</p>
@@ -269,7 +258,7 @@
             </template>
         </div>
 
-    </div>
+    </section>
 
     <div class="relative overflow-hidden">
 
