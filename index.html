@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="arquivos/imagens/logo.webp">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vazfy</title>
     <!-- Tailwindcss -->
     <link href="src/output.css" rel="stylesheet">
-    <!-- Alpinejs -->
-    <script defer src="scripts.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
-    <!-- Google Fonts Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+    <!-- AlpineJS -->
+    <script defer src="scripts.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
     <style>
         * {
             font-family: "Inter", sans-serif;
@@ -22,371 +21,381 @@
         [x-cloak] {
             display: none !important;
         }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9CA3AF;
+            border-radius: 8px;
+        }
     </style>
 </head>
-<body x-data="alpine" id="home">
+<body x-data="alpine">
 
     <!-- Navbar -->
-    <div class="max-w-7xl mx-4 xl:mx-auto my-8">
-        <div class="flex items-center justify-between">
-            <a href="#home">
-                <img class="w-24" src="static/logo.png" loading="lazy" alt="">
-            </a>
-            <div class="max-lg:hidden flex items-center gap-x-12">
-                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#solutions">Soluções</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#blog">Blog</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2" href="#faq">Dúvidas</a>
+    <div class="w-[90%] xl:max-w-7xl mx-auto my-8">
+        <div class="flex justify-between items-center">
+            <img class="w-24" src="static/img/logo.png" loading="lazy" alt="">
+            <div class="max-lg:hidden flex items-center gap-12">
+                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#solutions">Soluções</a>
+                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
+                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#blog">Blog</a>
+                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#faq">Dúvidas</a>
             </div>
-            <a class="max-lg:hidden flex items-center text-sm text-gray-600 hover:text-indigo-600 font-medium tracking-wide hover:bg-gray-100 rounded-md duration-300 px-4 py-2 gap-2" href="">
+            <a class="max-lg:hidden flex items-center text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2 gap-2" href="{% url 'Login' %}">
                 Entrar
-                <svg class="size-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                <svg class="mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
                     <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
                 </svg>
             </a>
             <button class="lg:hidden" @click="sidebar = true">
-                <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <svg class="text-gray-800 size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                 </svg>
             </button>
         </div>
-        <div :class="{ '-translate-x-64': sidebar }" class="fixed top-0 -right-64 z-50 w-64 h-full bg-white duration-500 p-8 space-y-3">
+        <div :class="{ '-translate-x-64': sidebar }" class="top-0 -right-64 z-50 fixed w-64 h-full bg-white duration-500 p-8 space-y-3">
             <div class="flex justify-between items-center">
-                <p class="text-3xl text-gray-900 font-semibold">Menu</p>
+                <p class="text-3xl text-gray-800 font-semibold">Menu</p>
                 <button @click="sidebar = false">
-                    <svg class="size-7 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <svg class="text-gray-800 size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
             <div class="flex flex-col">
-                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#solutions" @click="sidebar = false">Soluções</a>
-                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#development" @click="sidebar = false">Desenvolvimento</a>
-                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#blog" @click="sidebar = false">Blog</a>
-                <a class="text-sm text-gray-600 font-medium tracking-wide py-3" href="#faq" @click="sidebar = false">Dúvidas</a>
+                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#solutions" @click="sidebar = false">Soluções</a>
+                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#development" @click="sidebar = false">Desenvolvimento</a>
+                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#blog" @click="sidebar = false">Blog</a>
+                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#faq" @click="sidebar = false">Dúvidas</a>
                 <div class="h-0 border-b my-3"></div>
-                <a class="group flex items-center text-sm text-gray-600 font-medium tracking-wide py-3 gap-2" href="">
+                <a class="flex items-center text-sm text-gray-500 font-medium tracking-wide py-3 gap-2 group" href="">
                     Entrar
-                    <svg class="size-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <svg class="mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
                         <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
                     </svg>
                 </a>
             </div>
         </div>
-        <div class="fixed inset-0 z-40 size-full bg-black bg-opacity-50" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
+        <div class="z-40 fixed inset-0 bg-black bg-opacity-50 size-full" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
     </div>
 
-    <!-- Texto -->
-    <div class="max-w-7xl mx-4 xl:mx-auto">
-        <div class="text-center mt-20 lg:mt-40 space-y-6">
-            <p class="max-w-5xl text-5xl md:text-6xl xl:text-7xl text-gray-900 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
-            <p class="max-w-2xl sm:text-lg text-gray-600 leading-relaxed mx-auto">Ofereça praticidade com apenas um clique e obtenha toda uma análise de dados sobre sua empresa em tempo real com baixo custo</p>
+    <!-- Home -->
+    <div class="w-[90%] xl:max-w-7xl mx-auto">
+        <div class="text-center mt-20 lg:mt-44 space-y-6">
+            <p class="max-w-xl md:max-w-2xl xl:max-w-4xl md:text-5xl xl:text-6xl text-[2.5rem]/[2.5rem] text-gray-800 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
+            <p class="max-w-2xl sm:text-lg text-gray-500 mx-auto">Soluções de machine learning projetadas para aumentar a eficiência e a lucratividade do seu negócio com apenas um clique</p>
         </div>
-        <div class="flex items-center justify-center mt-10 gap-x-6">
-            <button class="bg-indigo-600 hover:bg-indigo-500 duration-300 rounded-full px-4 py-2" @click="contact_modal = true">
-                <p class="text-sm text-white font-semibold tracking-wide">Começar Agora</p>
-            </button>
-            <a class="shadow-sm border border-gray-300 hover:bg-gray-100 duration-300 rounded-full px-4 py-2" href="#solutions">
-                <p class="text-sm text-gray-900 font-medium tracking-wide">Aprender Mais</p>
-            </a>
+        <div class="flex justify-center items-center mt-10 gap-6">
+            <button class="text-sm text-white font-semibold rounded-full bg-indigo-600 hover:bg-indigo-500 duration-300 px-4 py-2" @click="contact_modal = true">Começar Agora</button>
+            <a class="text-sm text-gray-800 font-medium border border-gray-300 rounded-full hover:bg-gray-50 duration-300 px-4 py-2" href="#solutions">Testar Produtos</a>
         </div>
-        <div class="mt-32 lg:mt-48 mb-8 space-y-8">
-            <p class="text-gray-900 text-center leading-relaxed">Parceiros que confiam em nosso trabalho</p>
-            <div class="flex sm:flex-col lg:flex-row items-center justify-center gap-16">
-                <div class="flex flex-col sm:flex-row items-center gap-16">
-                    <img class="w-24" src="static/empresa1.png" loading="lazy" alt="">
-                    <img class="w-12" src="static/empresa2.png" loading="lazy" alt="">
-                    <img class="w-20" src="static/empresa3.png" loading="lazy" alt="">
+        <div class="mt-32 lg:mt-52 mb-8 space-y-8">
+            <p class="text-center text-gray-800">Parceiros que confiam em nosso trabalho</p>
+            <div class="flex lg:flex-row sm:flex-col justify-center items-center gap-16">
+                <div class="flex sm:flex-row flex-col items-center gap-16">
+                    <img class="w-24" src="static/img/empresa1.png" loading="lazy" alt="">
+                    <img class="w-12" src="static/img/empresa2.png" loading="lazy" alt="">
+                    <img class="w-20" src="static/img/empresa3.png" loading="lazy" alt="">
                 </div>
-                <div class="flex flex-col sm:flex-row items-center gap-16">
-                    <img class="w-12" src="static/empresa4.png" loading="lazy" alt="">
-                    <img class="w-16" src="static/empresa5.png" loading="lazy" alt="">
-                    <img class="w-24" src="static/empresa6.png" loading="lazy" alt="">
+                <div class="flex sm:flex-row flex-col items-center gap-16">
+                    <img class="w-12" src="static/img/empresa4.png" loading="lazy" alt="">
+                    <img class="w-16" src="static/img/empresa5.png" loading="lazy" alt="">
+                    <img class="w-24" src="static/img/empresa6.png" loading="lazy" alt="">
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Solutions -->
-    <section class="relative overflow-hidden py-20 lg:py-32" id="solutions">
-        <img class="absolute left-1/2 bottom-0 max-w-none h-full translate-x-[-50%] -z-10" src="static/background.jpg" loading="lazy" width="2245" height="1636">
-        <div class="container mx-auto px-4 space-y-12 sm:space-y-20">
-            <div class="max-w-5xl xl:text-center xl:mx-auto space-y-4">
-                <p class="text-3xl md:text-4xl xl:text-5xl text-white font-medium tracking-tight">Todas as soluções que sua empresa necessita</p>
-                <p class="sm:text-lg text-white leading-relaxed">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
+    <div class="relative overflow-hidden py-20 sm:py-32" id="solutions">
+        <img class="bottom-0 left-1/2 -z-10 absolute max-w-none h-full translate-x-[-50%]" src="static/img/background.jpg" loading="lazy" width="2245" height="1636">
+        <div class="w-[90%] xl:w-[80%] mx-auto space-y-12 sm:space-y-16">
+            <div class="max-w-5xl text-white xl:text-center xl:mx-auto space-y-4">
+                <p class="text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight">Todas as soluções que sua empresa necessita</p>
+                <p class="sm:text-lg">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
             </div>
             <div class="grid grid-cols-1 xl:grid-cols-5 items-center">
-                <div class="max-xl:hidden flex flex-col col-span-2">
+                <div class="max-xl:hidden col-span-2 flex flex-col">
                     <template x-for="intelligence in intelligences" hidden>
                         <button
                             :class="intelligence.title == selected_intelligence.title ? 'bg-white/20 ring-1 ring-inset ring-white/10' : 'hover:bg-white/10'"
-                            class="text-left rounded-full lg:rounded-l-xl lg:rounded-r-none duration-300 px-3 py-1 lg:p-8 space-y-2"
-                            @click="selected_intelligence = intelligence">
-                            <p class="text-xl text-white font-semibold tracking-wide" x-text="intelligence.title"></p>
-                            <p class="text-sm text-white tracking-wide leading-relaxed">A ferramenta definitiva para entender o impacto de suas estratégias de marketing. Identifique as mídias mais eficazes, otimize seus investimentos e maximize o retorno sobre seus esforços</p>
+                            class="text-left rounded-l-xl duration-300 p-8 space-y-2"
+                            @click="selected_intelligence = intelligence"
+                        >
+                            <p class="text-lg text-white font-semibold" x-text="intelligence.title"></p>
+                            <p class="text-white leading-relaxed">A ferramenta definitiva para entender o impacto de suas estratégias de marketing. Identifique as mídias mais eficazes, otimize seus investimentos e maximize o retorno sobre seus esforços</p>
                         </button>
                     </template>
                 </div>
                 <div class="xl:hidden flex flex-col rounded-t-xl bg-white/20 p-4 space-y-4">
-                    <div class="overflow-auto whitespace-nowrap py-4 space-x-4">
+                    <div class="whitespace-nowrap overflow-auto p-4 space-x-4">
                         <template x-for="intelligence in intelligences" hidden>
                             <button
-                                :class="intelligence.title == selected_intelligence.title ? 'text-gray-900 bg-white' : 'text-white'" 
+                                :class="intelligence.title == selected_intelligence.title ? 'text-gray-800 bg-white' : 'text-white'"
                                 class="rounded-full duration-300 px-4 py-1"
-                                @click="selected_intelligence = intelligence">
-                                <p class="text-xl text-left font-semibold tracking-wide" x-text="intelligence.title"></p>
+                                @click="selected_intelligence = intelligence"
+                            >
+                                <p class="text-lg text-left font-semibold" x-text="intelligence.title"></p>
                             </button>
                         </template>
                     </div>
-                    <p class="text-white tracking-wide leading-relaxed" x-text="selected_intelligence.description"></p>
+                    <p class="text-white leading-relaxed" x-text="selected_intelligence.description"></p>
                 </div>
-                <div class="col-span-3 min-h-full h-[800px] max-xl:rounded-t-none rounded-xl bg-white px-8 py-16 space-y-16 overflow-auto">
+                <div class="col-span-3 h-[800px] min-h-full rounded-xl max-xl:rounded-t-none bg-white overflow-auto p-8 space-y-16">
                     <template x-for="advantage in selected_intelligence.advantages" hidden>
                         <div class="space-y-2">
-                            <p class="text-xl text-gray-900 text-center font-semibold tracking-tight" x-text="advantage.title"></p>
-                            <p class="text-sm text-gray-600 font-medium tracking-wide leading-relaxed" x-text="advantage.description"></p>
+                            <p class="text-xl text-center text-gray-800 font-semibold tracking-tight" x-text="advantage.title"></p>
+                            <p class="text-gray-500 leading-relaxed" x-text="advantage.description"></p>
                         </div>
                     </template>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Development -->
-    <section class="container mx-auto px-4 py-20 lg:py-32 space-y-12 sm:space-y-20">
-        <div class="max-w-5xl xl:text-center xl:mx-auto space-y-4">
-            <h2 class="text-3xl sm:text-4xl text-gray-900 font-medium tracking-tight">Etapas do desenvolvimento</h2>
-            <p class="sm:text-lg text-gray-600 leading-relaxed">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid</p>
+    <div class="w-[90%] xl:w-[80%] py-20 sm:py-32 mx-auto space-y-12 sm:space-y-16" id="development">
+        <div class="max-w-4xl xl:text-center xl:mx-auto space-y-4">
+            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Passos para criação da inteligência</p>
+            <p class="sm:text-lg text-gray-500">Se você viu as inteligências acima, mas gostaria de algo personalizado, nós podemos criar uma solução junto com você, seguindo as etapas abaixo para alcançar o melhor resultado</p>
         </div>
-        <div class="flex flex-wrap w-full">
-            <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
-                <div class="flex relative pb-12">
-                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-                    </div>
-                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
-                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow pl-4 space-y-1">
-                        <h3 class="text-lg text-gray-900 font-medium">Negócio</h3>
-                        <p class="text-gray-600 tracking-wide leading-relaxed">Envolve a identificação de problemas e oportunidades, o estabelecimento de indicadores claros e a definição de critérios</p>
-                    </div>
+        <div class="flex flex-wrap">
+            <div class="flex flex-wrap w-full">
+                <div class="md:w-1/2 lg:w-2/5 md:py-6 md:pr-10">
+                    <template x-for="(development, index) in developments" :key="index" hidden>
+                        <div :class="{ 'pb-12': index != 3 }" class="relative flex pb-12">
+                            <div class="absolute inset-0 flex justify-center items-center w-10 h-full" x-show="index != 3" x-cloak>
+                                <div class="w-1 h-full bg-gray-200 pointer-events-none"></div>
+                            </div>
+                            <div class="inline-flex relative z-10 flex-shrink-0 justify-center items-center text-white rounded-full bg-indigo-600 size-11">
+                                <span x-html="development.svg"></span>
+                            </div>
+                            <div class="flex-grow pl-4 space-y-1">
+                                <p class="text-lg text-gray-800 font-semibold" x-text="development.title"></p>
+                                <p class="text-gray-500" x-text="development.description"></p>
+                            </div>
+                        </div>
+                    </template>
                 </div>
-                <div class="flex relative pb-12">
-                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-                    </div>
-                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
-                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow pl-4 space-y-1">
-                        <h3 class="text-lg text-gray-900 font-medium">Dados</h3>
-                        <p class="text-gray-600 tracking-wide leading-relaxed">Preparação dos dados para a modelagem, envolvendo limpeza, transformação, seleção e integração</p>
-                    </div>
-                </div>
-                <div class="flex relative pb-12">
-                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-                    </div>
-                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
-                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="5" r="3"></circle>
-                            <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow pl-4 space-y-1">
-                        <h3 class="text-lg text-gray-900 font-medium">Aprendizado</h3>
-                        <p class="text-gray-600 tracking-wide leading-relaxed">Treinamento e a validação dos modelos de machine learning são aplicados para obter o melhor desempenho possível</p>
-                    </div>
-                </div>
-                <div class="flex relative">
-                    <div class="relative z-10 h-fit rounded-full bg-indigo-500 p-2.5">
-                        <svg class="size-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                            <path d="M22 4L12 14.01l-3-3"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow pl-4 space-y-1">
-                        <h3 class="text-lg text-gray-900 font-medium">Deploy</h3>
-                        <p class="text-gray-600 tracking-wide leading-relaxed">Pode-se envolver a implementação direto em um sistema, endpoints ou outras formas de utilizar os resultados</p>
-                    </div>
-                </div>
+                <img class="object-left md:w-1/2 lg:w-3/5 rounded-lg mt-12 md:mt-0 object-cover" src="https://tailwindui.com/img/component-images/project-app-screenshot.png" loading="lazy" alt="step">
             </div>
-            <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://dummyimage.com/1200x500" alt="step">
         </div>
-    </section>
+    </div>
 
     <!-- CTA -->
     <div class="relative overflow-hidden py-32">
-        <img class="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 -z-10" src="static/background.jpg" loading="lazy" width="2347" height="1244">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <img class="top-1/2 left-1/2 -z-10 absolute max-w-none -translate-x-1/2 -translate-y-1/2" src="static/img/background.jpg" loading="lazy" width="2347" height="1244" alt="">
+        <div class="max-w-7xl px-4 mx-auto">
             <div class="max-w-lg mx-auto">
-                <div class="text-white text-center tracking-tight space-y-4">
+                <div class="text-center text-white tracking-tight space-y-4">
                     <p class="text-3xl sm:text-4xl font-medium">Queremos te conhecer</p>
                     <p class="text-lg">É hora de utilizar a matemática para enriquecer sua tomada de decisão e reduzir suas chances de errar</p>
                 </div>
-                <button
-                    class="flex w-fit text-sm text-gray-900 font-semibold bg-white hover:bg-gray-100 duration-300 rounded-full mx-auto mt-10 px-6 py-2"
-                    @click="contact_modal = true">
-                    Começar Agora
+                <button class="flex w-fit rounded-full bg-white hover:bg-gray-100 duration-300 px-6 py-2 mx-auto mt-10" @click="contact_modal = true">
+                    <p class="text-sm text-gray-800 font-semibold">Começar Agora</p>
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Blog -->
-    <section class="container mx-auto max-xl:px-6 py-20 sm:py-32 space-y-16" id="blog">
-
-        <div class="lg:text-center space-y-4">
-            <p class="text-3xl sm:text-4xl lg:text-5xl text-gray-900 font-medium tracking-tight">Acompanhe nosso blog</p>
-            <p class="max-w-3xl sm:text-lg text-gray-600 mx-auto">Explore o nosso blog escolhendo um dos artigos no carrossel abaixo e descubra mais sobre machine learning e como podemos impulsionar o seu negócio</p>
+    <div class="w-[90%] xl:w-[80%] py-20 sm:py-32 mx-auto space-y-12 sm:space-y-16" id="blog">
+        <div class="max-w-2xl xl:text-center xl:mx-auto space-y-4">
+            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Acompanhe nosso blog</p>
+            <p class="sm:text-lg text-gray-500">Explore ainda mais escolhendo um dos artigos abaixo e descubra tudo sobre machine learning e como podemos impulsionar o seu negócio</p>
         </div>
-
-        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            <template x-for="index in 4" hidden>
-                <a class="relative w-full max-w-[384px] h-[480px] rounded duration-500 hover:scale-[0.99]" href="">
-                    <img class="absolute rounded object-cover size-full" :src="'static/blog' + index + '.avif'">
-                    <div class="z-10 absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-gray-900 to-transparent rounded p-6 gap-2">
-                        <p class="text-sm text-gray-300 font-medium">Mar 16, 2020</p>
-                        <p class="text-white font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 sm:gap-8">
+            <template x-for="index in 3" hidden>
+                <div class="border rounded-lg bg-white shadow-sm">
+                    <img class="w-full h-64 lg:h-80 rounded-t-lg object-center object-cover" :src="'static/img/blog' + index + '.avif'" alt="">
+                    <div class="p-6">
+                        <div>
+                            <p class="text-xl text-gray-800 font-semibold">All the features you want to know</p>
+                            <p class="text-gray-500 mt-2 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi recusandae nulla veritatis id tempore sapiente</p>
+                            <a class="flex items-center w-fit text-sm text-indigo-600 hover:text-indigo-500 font-medium rounded duration-300 gap-1" href="">
+                                Ver detalhes
+                                <svg class="mt-0.5 size-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <hr class="w-full my-6">
+                        <div class="flex items-center gap-4">
+                            <img class="rounded-full object-center object-cover size-10" src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
+                            <div>
+                                <p class="text-gray-800 font-medium">Victor Zoré</p>
+                                <p class="text-sm text-gray-500">Fevereiro 6, 2024</p>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
             </template>
         </div>
+    </div>
 
-    </section>
-
-    <div class="relative overflow-hidden">
-
-        <img class="absolute size-full -z-10" src="static/background-faq.jpg" alt="">
-
-        <!-- Faq -->
-        <div class="max-w-7xl mx-auto max-xl:px-6 py-20 sm:py-32 space-y-16" id="faq">
-
-            <div class="max-w-2xl tracking-tight space-y-4">
-                <p class="text-3xl sm:text-4xl text-gray-900 font-medium">Perguntas frequentes</p>
-                <p class="text-lg text-gray-600">Se você não encontrar o que procura, envie um e-mail para nossa equipe de suporte e alguém entrará em contato com você</p>
+    <!-- FAQ -->
+    <div class="bg-gray-50 pt-20 sm:pt-32" id="faq">
+        <div class="w-[90%] xl:max-w-7xl mx-auto space-y-12 sm:space-y-16">
+            <div class="max-w-2xl space-y-4">
+                <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Perguntas frequentes</p>
+                <p class="sm:text-lg text-gray-500">Se você não encontrar o que procura, envie um e-mail para nossa equipe de suporte e alguém entrará em contato com você</p>
             </div>
-    
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">Does TaxPal handle VAT?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">Well no, but if you move your company offshore you can probably ignore it.</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">Can I pay for my subscription via purchase order?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">Absolutely, we are happy to take your money in all forms.</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">How do I apply for a job at TaxPal?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">We only hire our customers, so subscribe for a minimum of 6 months and then let’s talk.</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">What was that testimonial about tax fraud all about?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">TaxPal is just a software application, ultimately your books are your responsibility.</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">TaxPal sounds horrible but why do I still feel compelled to purchase?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-lg text-gray-900 font-medium">I found other companies called TaxPal, are you sure you can use this name?</p>
-                    <p class="text-sm text-gray-600 tracking-wide">Honestly not sure at all. We haven’t actually incorporated or anything, we just thought it sounded cool and made this website.</p>
-                </div>
+                <template x-for="index in 6" hidden>
+                    <div class="space-y-2">
+                        <p class="text-lg text-gray-800 font-medium tracking-tight">Does TaxPal handle VAT?</p>
+                        <p class="text-gray-500">Well no, but if you move your company offshore you can probably ignore it.</p>
+                    </div>
+                </template>
             </div>
-    
         </div>
+    </div>
 
-        <!-- Footer -->
-        <div class="max-w-7xl divide-y mx-auto max-sm:px-6 space-y-16">
-
-            <div class="flex flex-col items-center gap-y-6">
-                <img class="h-10" src="static/logo.png" loading="lazy">
-                <div class="flex max-sm:flex-col max-sm:gap-y-6 sm:gap-x-6">
-                    <div class="flex justify-center gap-x-6">
-                        <a class="flex-1 text-sm text-gray-600 tracking-wide p-3" href="#solutions">Soluções</a>
-                        <a class="flex-1 text-sm text-gray-600 tracking-wide p-3" href="#development">Desenvolvimento</a>
+    <!-- Footer -->
+    <div class="bg-gray-50 pt-12 sm:pt-16">
+        <div class="w-[90%] xl:max-w-7xl divide-y mx-auto space-y-12 sm:space-y-16">
+            <div class="flex flex-col items-center gap-8">
+                <img class="h-10" src="static/img/logo.png" loading="lazy" alt="">
+                <div class="flex max-sm:flex-col gap-8">
+                    <div class="flex justify-center gap-8">
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#solutions">Soluções</a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
                     </div>
-                    <div class="flex justify-center gap-x-6">
-                        <a class="flex-1 text-sm text-gray-600 tracking-wide p-3" href="#blog">Blog</a>
-                        <a class="flex-1 text-sm text-gray-600 tracking-wide p-3" href="#faq">Dúvidas</a>
+                    <div class="flex justify-center gap-8">
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#blog">Blog</a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#faq">Dúvidas</a>
                     </div>
                 </div>
             </div>
-
-            <div class="flex max-md:flex-col-reverse items-center justify-between py-12 gap-y-6">
-                <p class="text-sm text-gray-600 text-center">Copyright © 2024 Vazfy. Todos os direitos reservados</p>
-                <div class="flex items-center gap-x-6">
+            <div class="flex max-md:flex-col-reverse justify-between items-center py-12 gap-8">
+                <p class="text-sm text-center text-gray-500">Copyright © 2024 Vazfy. Todos os direitos reservados</p>
+                <div class="flex items-center gap-8">
                     <a href="">
-                        <svg class="text-gray-600 size-6 duration-300 hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="text-gray-500 hover:-translate-y-0.5 duration-500 size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
                         </svg>
                     </a>
                     <a href="">
-                        <svg class="text-gray-600 size-6 duration-300 hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="text-gray-500 hover:-translate-y-0.5 duration-500 size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z"></path>
                         </svg>
                     </a>
                     <a href="">
-                        <svg class="text-gray-600 size-6 duration-300 hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="text-gray-500 hover:-translate-y-0.5 duration-500 size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
                         </svg>
                     </a>
                     <a href="">
-                        <svg class="text-gray-600 size-6 duration-300 hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg class="text-gray-500 hover:-translate-y-0.5 duration-500 size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path>
                         </svg>
                     </a>
                 </div>
             </div>
-
         </div>
-
     </div>
 
-    <!-- Modal para Contato -->
-    <div class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50" x-show="contact_modal" x-transition.opacity.duration.500ms x-cloak>
-        <div class="max-w-[416px] bg-white rounded p-6 mx-4 space-y-6" @mousedown.outside="contact_modal = false">
+    <!-- Contact -->
+    <div
+        class="z-40 fixed inset-0 flex justify-center items-center bg-black bg-opacity-30"
+        x-show="contact_modal"
+        x-transition.opacity.duration.500ms
+        x-cloak
+    >
+        <div
+            class="max-w-md rounded bg-white p-8 mx-6 space-y-6"
+            @mousedown.outside="contact_modal = false"
+        >
             <div class="text-center space-y-1">
-                <p class="text-2xl text-gray-900 font-semibold">Informe seus dados</p>
-                <p class="text-gray-600">Vamos utilizá-los para avaliar seu perfil e entrar em contato o mais rápido possível</p>
+                <p class="text-2xl text-gray-800 font-bold tracking-tight">Informe seus dados</p>
+                <p class="text-gray-500">Vamos utilizá-los para avaliar seu perfil e entraremos em contato o mais rápido possível</p>
             </div>
-            <form class="text-sm text-gray-900 space-y-6">
-                <input class="w-full border border-gray-300 rounded p-3 outline-none" type="text" placeholder="Empresa" required>
-                <input class="w-full border border-gray-300 rounded p-3 outline-none" type="email" placeholder="Email" required>
-                <input class="w-full border border-gray-300 rounded p-3 outline-none" type="tel" placeholder="Telefone" required>
-                <div class="relative">
-                    <select class="w-full bg-white border border-gray-300 rounded p-3 appearance-none outline-none" required>
-                        <option value="" disabled selected>Número de funcionarios?</option>
+            <form class="text-sm text-gray-800" @submit.prevent="send_contact()">
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="company">Empresa</label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="company"
+                        x-model="contact.company"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="email">Email</label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="email"
+                        id="email"
+                        x-model="contact.email"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="phone">Telefone</label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="phone"
+                        x-model="contact.phone"
+                        required
+                    />
+                </div>
+                <div class="relative mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="employees">Quantidade de funcionarios?</label>
+                    <select 
+                        class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
+                        id="employees"
+                        x-model="contact.employees"
+                        required
+                    >
+                        <option value="" disabled selected>Selecione uma opção</option>
                         <option value="0-5">0 - 5</option>
                         <option value="6-25">6 - 25</option>
                         <option value="26-100">26 - 100</option>
                         <option value="101-300">101 - 300</option>
                         <option value="301+">301+</option>
                     </select>
-                    <svg class="top-3 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+                    <svg class="top-7 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
                 </div>
-                <div class="relative">
-                    <select class="w-full bg-white border border-gray-300 rounded p-3 appearance-none outline-none" required>
-                        <option value="" disabled selected>Qual solução tem interesse?</option>
+                <div class="relative mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="solution">Qual solução tem interesse?</label>
+                    <select 
+                        class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
+                        id="solution"
+                        x-model="contact.solution"
+                        required
+                    >
+                        <option value="" disabled selected>Selecione uma opção</option>
                         <option value="markfy">MarkFy</option>
                         <option value="leadfy">LeadFy</option>
                         <option value="pricefy">PriceFy</option>
                         <option value="churnfy">ChurnFy</option>
-                        <option value="outro">Outro</option>
+                        <option value="personalizada">Personalizada</option>
                     </select>
-                    <svg class="top-3 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+                    <svg class="top-7 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
                 </div>
-                <button class="w-full bg-indigo-600 rounded p-2" type="submit">
-                    <p class="text-white font-bold tracking-wide">Enviar</p>
+                <button
+                    class="w-full rounded bg-indigo-600 hover:bg-indigo-500 duration-300 p-2 mt-6"
+                    type="submit"
+                >
+                    <p class="text-sm text-white font-semibold tracking-wide">Enviar</p>
                 </button>
             </form>
         </div>
     </div>
+
 
 </body>
 </html>
