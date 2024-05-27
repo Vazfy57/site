@@ -89,8 +89,8 @@
     <!-- Home -->
     <div class="w-[90%] xl:max-w-7xl mx-auto">
         <div class="text-center mt-20 lg:mt-44 space-y-6">
-            <p class="max-w-xl md:max-w-2xl xl:max-w-4xl md:text-5xl xl:text-6xl text-[2.5rem]/[2.5rem] text-gray-800 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia empresarial</p>
-            <p class="max-w-2xl sm:text-lg text-gray-500 mx-auto">Soluções de machine learning projetadas para aumentar a eficiência e a lucratividade do seu negócio com apenas um clique</p>
+            <p class="max-w-xl md:max-w-2xl xl:max-w-4xl md:text-5xl xl:text-6xl text-[2.5rem]/[2.5rem] text-gray-800 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia de negócio</p>
+            <p class="max-w-2xl sm:text-lg text-gray-500 mx-auto">Soluções de machine learning projetadas para aumentar a eficiência e a lucratividade do seu negócio de forma inteligente</p>
         </div>
         <div class="flex justify-center items-center mt-10 gap-6">
             <button class="text-sm text-white font-semibold rounded-full bg-indigo-600 hover:bg-indigo-500 duration-300 px-4 py-2" @click="contact_modal = true">Começar Agora</button>
@@ -130,7 +130,7 @@
                             @click="selected_intelligence = intelligence"
                         >
                             <p class="text-lg text-white font-semibold" x-text="intelligence.title"></p>
-                            <p class="text-white leading-relaxed">A ferramenta definitiva para entender o impacto de suas estratégias de marketing. Identifique as mídias mais eficazes, otimize seus investimentos e maximize o retorno sobre seus esforços</p>
+                            <p class="text-white leading-relaxed" x-text="intelligence.description"></p>
                         </button>
                     </template>
                 </div>
@@ -148,10 +148,10 @@
                     </div>
                     <p class="text-white leading-relaxed" x-text="selected_intelligence.description"></p>
                 </div>
-                <div class="col-span-3 h-[800px] min-h-full rounded-xl max-xl:rounded-t-none bg-white overflow-auto p-8 space-y-16">
+                <div class="col-span-3 h-[800px] min-h-full rounded-xl max-xl:rounded-t-none bg-white overflow-auto p-8 sm:p-16 space-y-16">
                     <template x-for="advantage in selected_intelligence.advantages" hidden>
                         <div class="space-y-2">
-                            <p class="text-xl text-center text-gray-800 font-semibold tracking-tight" x-text="advantage.title"></p>
+                            <p class="text-2xl text-center text-gray-800 font-semibold tracking-tight" x-text="advantage.title"></p>
                             <p class="text-gray-500 leading-relaxed" x-text="advantage.description"></p>
                         </div>
                     </template>
@@ -164,7 +164,7 @@
     <div class="w-[90%] xl:w-[80%] py-20 sm:py-32 mx-auto space-y-12 sm:space-y-16" id="development">
         <div class="max-w-4xl xl:text-center xl:mx-auto space-y-4">
             <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Passos para criação da inteligência</p>
-            <p class="sm:text-lg text-gray-500">Se você viu as inteligências acima, mas gostaria de algo personalizado, nós podemos criar uma solução junto com você, seguindo as etapas abaixo para alcançar o melhor resultado</p>
+            <p class="sm:text-lg text-gray-500">O projeto é desenvolvido através de quatro etapas estratégicas, fundamentadas na metodologia CRISP-DM, garantindo tanto o progresso fluído quanto a qualidade através do compromisso conjunto</p>
         </div>
         <div class="flex flex-wrap">
             <div class="flex flex-wrap w-full">
@@ -212,14 +212,14 @@
             <p class="sm:text-lg text-gray-500">Explore ainda mais escolhendo um dos artigos abaixo e descubra tudo sobre machine learning e como podemos impulsionar o seu negócio</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 sm:gap-8">
-            <template x-for="index in 3" hidden>
-                <div class="border rounded-lg bg-white shadow-sm">
+            <template x-for="(post, index) in posts" hidden>
+                <div class="flex flex-col border rounded-lg bg-white shadow-sm">
                     <img class="w-full h-64 lg:h-80 rounded-t-lg object-center object-cover" :src="'static/img/blog' + index + '.avif'" alt="">
-                    <div class="p-6">
-                        <div>
-                            <p class="text-xl text-gray-800 font-semibold">All the features you want to know</p>
-                            <p class="text-gray-500 mt-2 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi recusandae nulla veritatis id tempore sapiente</p>
-                            <a class="flex items-center w-fit text-sm text-indigo-600 hover:text-indigo-500 font-medium rounded duration-300 gap-1" href="">
+                    <div class="flex flex-col flex-1 p-6">
+                        <div class="flex-1">
+                            <p class="text-xl text-gray-800 font-semibold tracking-tight" x-text="post.title"></p>
+                            <p class="text-gray-500 mt-2 mb-4" x-text="post.description"></p>
+                            <a class="flex items-center w-fit text-sm text-indigo-600 hover:text-indigo-500 font-medium rounded duration-300 gap-1" :href="post.url">
                                 Ver detalhes
                                 <svg class="mt-0.5 size-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M5 12h14"></path>
@@ -232,7 +232,7 @@
                             <img class="rounded-full object-center object-cover size-10" src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
                             <div>
                                 <p class="text-gray-800 font-medium">Victor Zoré</p>
-                                <p class="text-sm text-gray-500">Fevereiro 6, 2024</p>
+                                <p class="text-sm text-gray-500" x-text="post.date"></p>
                             </div>
                         </div>
                     </div>
@@ -246,13 +246,13 @@
         <div class="w-[90%] xl:max-w-7xl mx-auto space-y-12 sm:space-y-16">
             <div class="max-w-2xl space-y-4">
                 <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Perguntas frequentes</p>
-                <p class="sm:text-lg text-gray-500">Se você não encontrar o que procura, envie um e-mail para nossa equipe de suporte e alguém entrará em contato com você</p>
+                <p class="sm:text-lg text-gray-500">Aqui estão algumas respostas detalhadas para dúvidas mais específicas que você ainda possa ter sobre este assunto</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <template x-for="index in 6" hidden>
+                <template x-for="question in questions" hidden>
                     <div class="space-y-2">
-                        <p class="text-lg text-gray-800 font-medium tracking-tight">Does TaxPal handle VAT?</p>
-                        <p class="text-gray-500">Well no, but if you move your company offshore you can probably ignore it.</p>
+                        <p class="text-lg text-gray-800 font-medium tracking-tight" x-text="question.title"></p>
+                        <p class="text-gray-500" x-text="question.description"></p>
                     </div>
                 </template>
             </div>
@@ -351,7 +351,7 @@
                 </div>
                 <div class="relative mt-4 space-y-2">
                     <label class="text-sm text-gray-800 font-medium" for="employees">Quantidade de funcionarios?</label>
-                    <select 
+                    <select
                         class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
                         id="employees"
                         x-model="contact.employees"
