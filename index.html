@@ -48,7 +48,7 @@
                 <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#blog">Blog</a>
                 <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#faq">Dúvidas</a>
             </div>
-            <a class="max-lg:hidden flex items-center text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2 gap-2" href="{% url 'Login' %}">
+            <a class="max-lg:hidden flex items-center text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2 gap-2" href="">
                 Entrar
                 <svg class="mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
                     <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
@@ -184,7 +184,7 @@
                         </div>
                     </template>
                 </div>
-                <img class="object-left md:w-1/2 lg:w-3/5 rounded-lg mt-12 md:mt-0 object-cover" src="https://tailwindui.com/img/component-images/project-app-screenshot.png" loading="lazy" alt="step">
+                <img class="object-left max-sm:hidden md:w-1/2 lg:w-3/5 rounded-lg mt-12 md:mt-0 object-cover" src="https://tailwindui.com/img/component-images/project-app-screenshot.png" loading="lazy" alt="step">
             </div>
         </div>
     </div>
@@ -229,7 +229,7 @@
                         </div>
                         <hr class="w-full my-6">
                         <div class="flex items-center gap-4">
-                            <img class="rounded-full object-center object-cover size-10" src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
+                            <img class="rounded-full object-center object-cover size-10" src="static/img/perfil.jpg" alt="">
                             <div>
                                 <p class="text-gray-800 font-medium">Victor Zoré</p>
                                 <p class="text-sm text-gray-500" x-text="post.date"></p>
@@ -396,7 +396,6 @@
             </form>
         </div>
     </div>
-
 
 </body>
 </html>
