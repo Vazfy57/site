@@ -156,8 +156,12 @@ document.addEventListener('alpine:init', () => {
         },
 
         send_contact() {
-            fetch('', {
-                method: 'GET',
+            fetch('https://script.google.com/macros/s/AKfycbwbJ1gi-1A736m6HE8h_OimlWh3FxWKWPG9uEKt_wxxp41dl75FuBZPx9vp-_Si7yLSDQ/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(this.contact),
             })
             this.contact_modal = false
             this.contact = {}
