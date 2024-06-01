@@ -6,8 +6,6 @@ document.addEventListener('alpine:init', () => {
         message_modal: false,
         contact: {},
         selected_intelligence: '',
-        message: '',
-        message_status: '',
         intelligences: [
             {
                 title: 'MediaMax',
@@ -163,8 +161,6 @@ document.addEventListener('alpine:init', () => {
             })
             this.contact_modal = false
             this.contact = {}
-            this.message = 'Formulario enviado com sucesso!'
-            this.message_status = 'success'
             this.message_modal = true
             setTimeout(() => {
                 this.message_modal = false
