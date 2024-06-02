@@ -321,7 +321,7 @@
         x-cloak
     >
         <div
-            class="max-w-md rounded bg-white p-8 mx-6 space-y-6"
+            class="max-w-md rounded bg-white p-8 mx-4 space-y-6"
             @mousedown.outside="contact_modal = false"
         >
             <div class="text-center space-y-1">
@@ -412,8 +412,8 @@
 
     <!-- Dropdown Message -->
     <div
-        :class="{ 'translate-y-32': message_modal }"
-        class="-top-24 left-1/2 z-50 fixed flex w-full max-w-md border rounded bg-white shadow-sm -translate-x-1/2 duration-500 overflow-hidden"
+        :class="{ 'translate-y-36': message_modal }"
+        class="-top-28 left-1/2 z-50 fixed flex w-full max-w-md border rounded bg-white shadow-sm -translate-x-1/2 duration-500 overflow-hidden"
     >
         <div class="flex justify-center items-center bg-emerald-500 p-4">
             <svg class="text-white fill-current size-6" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
