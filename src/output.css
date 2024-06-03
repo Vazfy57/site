@@ -1197,6 +1197,10 @@ video {
   padding-bottom: 3rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
