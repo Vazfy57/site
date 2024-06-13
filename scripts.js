@@ -154,8 +154,9 @@ document.addEventListener('alpine:init', () => {
         },
 
         send_contact() {
+            this.contact.device = window.innerWidth <= 640 ? 'Mobile' : window.innerWidth <= 1024 ? 'Tablet' : 'Desktop'
             this.contact.date = new Date().toISOString().split('T')[0]
-            fetch('https://script.google.com/macros/s/AKfycbzRScsjZOxk2GB_ypd0Y3r50naZ8gI9-kNZc-NrLr1OIkZrIhXK-PAfYQnDIY7arH67Gg/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbykFuqq2GRQQVmAYLOdKapyyirEidQikeyLLo6G7nTg4k4k4HS-P9tqXkdtMcQTHTEtSg/exec', {
                 method: 'POST',
                 body: JSON.stringify(this.contact),
             })
