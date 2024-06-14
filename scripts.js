@@ -151,14 +151,12 @@ document.addEventListener('alpine:init', () => {
 
         init() {
             this.selected_intelligence = this.intelligences[0]
-            console.log(new Date().toISOString())
         },
 
         send_contact() {
             this.contact.device = window.innerWidth <= 640 ? 'Mobile' : window.innerWidth <= 1024 ? 'Tablet' : 'Desktop'
             this.contact.date = new Date().toISOString().split('T')[0]
-            
-            /* fetch('https://script.google.com/macros/s/AKfycbxkZxq0PAQgBSVTdS2o-6wgtL5fxK618Rm7x1-3eWIefo0dBDGXQb6MTgag1ZsD1zaMvQ/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxkZxq0PAQgBSVTdS2o-6wgtL5fxK618Rm7x1-3eWIefo0dBDGXQb6MTgag1ZsD1zaMvQ/exec', {
                 method: 'POST',
                 body: JSON.stringify(this.contact),
             })
@@ -167,7 +165,7 @@ document.addEventListener('alpine:init', () => {
             this.message_modal = true
             setTimeout(() => {
                 this.message_modal = false
-            }, 5000) */
+            }, 5000)
         },
 
     }))
