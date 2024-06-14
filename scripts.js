@@ -13,7 +13,7 @@ document.addEventListener('alpine:init', () => {
                 advantages: [
                     {
                         title: 'Qual o problema que essa solução resolve?',
-                        description: 'MediaMax Insights resolve o desafio de otimizar os investimentos em publicidade ao determinar a alocação mais eficaz de recursos entre diferentes canais de mídia, maximizando assim o retorno sobre o investimento (ROI)',
+                        description: 'MediaMax resolve o desafio de otimizar os investimentos em publicidade ao determinar a alocação mais eficaz de recursos entre diferentes canais de mídia, maximizando assim o retorno sobre o investimento (ROI)',
                     },
                     {
                         title: 'Como a solução resolve esse problema?',

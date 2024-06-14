@@ -161,9 +161,9 @@
                     <p class="text-lg sm:text-xl text-center text-white font-semibold" x-text="selected_intelligence.title"></p>
                     <p class="max-w-2xl text-white sm:text-center leading-relaxed mx-auto" x-text="selected_intelligence.description"></p>
                 </div>
-                <div class="col-span-3 h-[800px] min-h-full rounded-xl max-xl:rounded-t-none bg-white overflow-auto p-8 sm:p-16 space-y-16">
+                <div class="col-span-3 min-h-[800px] rounded-xl max-xl:rounded-t-none bg-white p-8 sm:p-16 space-y-16">
                     <template x-for="advantage in selected_intelligence.advantages" hidden>
-                        <div class="space-y-2">
+                        <div class="space-y-4">
                             <p class="text-xl sm:text-2xl text-center text-gray-800 font-semibold tracking-tight" x-text="advantage.title"></p>
                             <p class="text-gray-500 leading-relaxed" x-text="advantage.description"></p>
                         </div>
