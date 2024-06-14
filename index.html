@@ -333,6 +333,17 @@
             </div>
             <form class="text-sm text-gray-800" @submit.prevent="send_contact()">
                 <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="name">Qual é o seu nome?</label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="name"
+                        x-model="contact.name"
+                        maxlength="50"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
                     <label class="text-sm text-gray-800 font-medium" for="company">Qual o nome da sua empresa?</label>
                     <input
                         class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"

@@ -107,19 +107,19 @@ document.addEventListener('alpine:init', () => {
                 title: 'O que é ciência de dados?',
                 description: 'Ciência de dados é o estudo das relações entre uma variável aleatória de interesse e variáveis aleatórias explicativas, a fim de diminuir a incerteza sobre a variável de interesse',
                 date: 'Março 18, 2023',
-                url: 'https://blog.vazfy.tech/2023/03/o-que-e-ciencia-de-dados.html',
+                url: 'https://blog.vazfy.com/2023/03/o-que-e-ciencia-de-dados.html',
             },
             {
                 title: 'Porque coletar dados faz empresas crescerem mais rápido?',
                 description: 'Dados não são só a informação, é o mapa para você encontrar o caminho da lucratividade',
                 date: 'Março 29, 2023',
-                url: 'https://blog.vazfy.tech/2023/03/porque-coletar-dados-faz-sua-empresa.html',
+                url: 'https://blog.vazfy.com/2023/03/porque-coletar-dados-faz-sua-empresa.html',
             },
             {
                 title: 'Como ciência de dados está revolucionando o mercado?',
                 description: 'Com Data Science as empresas tomam decisões baseadas em dados que levam a maior eficiência, economia de custos e crescimento de receita',
                 date: 'Abril 13, 2023',
-                url: 'https://blog.vazfy.tech/2023/04/como-ciencia-de-dados-esta.html',
+                url: 'https://blog.vazfy.com/2023/04/como-ciencia-de-dados-esta.html',
             },
         ],
         questions: [
