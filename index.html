@@ -52,17 +52,23 @@
         <div class="flex justify-between items-center">
             <img class="w-24" src="static/img/logo.png" loading="lazy" alt="">
             <div class="max-lg:hidden flex items-center gap-12">
-                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#solutions">Soluções</a>
-                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
-                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#blog">Blog</a>
-                <a class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2" href="#faq">Dúvidas</a>
+                <template x-for="(link, index) in language == 'en' ? navbar.english : navbar.portuguese" :key="index" hidden> 
+                    <a
+                        class="text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2"
+                        :href="link.href"
+                        x-text="link.title"
+                    >
+                    </a>
+                </template>
             </div>
-            <a class="max-lg:hidden flex items-center text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide rounded-md hover:bg-gray-100 duration-300 px-4 py-2 gap-2" href="">
-                Entrar
-                <svg class="mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
-                    <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-                </svg>
-            </a>
+            <div class="flex items-center gap-4">
+                <button @click="language = 'pt'">
+                    <img class="size-11" src="static/img/brasil.png" loading="lazy" alt="">
+                </button>
+                <button @click="language = 'en'">
+                    <img class="size-8" src="static/img/estados-unidos.png" alt="">
+                </button>
+            </div>
             <button class="lg:hidden" @click="sidebar = true">
                 <svg class="text-gray-800 size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
@@ -79,17 +85,24 @@
                 </button>
             </div>
             <div class="flex flex-col">
-                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#solutions" @click="sidebar = false">Soluções</a>
-                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#development" @click="sidebar = false">Desenvolvimento</a>
-                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#blog" @click="sidebar = false">Blog</a>
-                <a class="text-sm text-gray-500 font-medium tracking-wide py-3" href="#faq" @click="sidebar = false">Dúvidas</a>
+                <template x-for="(link, index) in language == 'en' ? navbar.english : navbar.portuguese" :key="index" hidden> 
+                    <a
+                        class="text-sm text-gray-500 font-medium tracking-wide py-3"
+                        :href="link.href"
+                        x-text="link.title"
+                        @click="sidebar = false"
+                    >
+                    </a>
+                </template>
                 <div class="h-0 border-b my-3"></div>
-                <a class="flex items-center text-sm text-gray-500 font-medium tracking-wide py-3 gap-2 group" href="">
-                    Entrar
-                    <svg class="mt-0.5 size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
-                        <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+                <div class="flex items-center gap-4">
+                    <button @click="language = 'pt'">
+                        PT
+                    </button>
+                    <button @click="language = 'en'">
+                        EN
+                    </button>
+                </div>
             </div>
         </div>
         <div class="z-40 fixed inset-0 bg-black bg-opacity-50 size-full" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
@@ -98,16 +111,26 @@
     <!-- Home -->
     <div class="w-[90%] xl:max-w-7xl mx-auto">
         <div class="text-center mt-24 lg:mt-44 space-y-6">
-            <p class="max-w-xl md:max-w-2xl xl:max-w-4xl md:text-5xl xl:text-6xl text-[2.5rem]/[2.5rem] text-gray-800 font-semibold tracking-tight mx-auto">Deixe os dados direcionarem sua estratégia de negócio</p>
-            <p class="max-w-2xl sm:text-lg text-gray-500 mx-auto">Soluções de machine learning projetadas para aumentar a eficiência e a lucratividade do seu negócio de forma inteligente</p>
+            <p 
+                :class="language == 'en' ? 'max-w-xl' : 'max-w-xl md:max-w-2xl xl:max-w-4xl'"
+                class="md:text-5xl xl:text-6xl text-[2.5rem]/[2.5rem] text-gray-800 font-semibold tracking-tight mx-auto" 
+                x-text="language == 'en' ? 'Let data drive your business strategy' : 'Deixe os dados direcionarem sua estratégia de negócio'"
+            >
+            </p>
+            <p 
+                :class="language == 'en' ? 'max-w-xl' : 'max-w-2xl'"
+                class="sm:text-lg text-gray-500 mx-auto"
+                x-text="language == 'en' ? 'Machine learning solutions designed to intelligently increase the efficiency and profitability of your business' : 'Soluções de machine learning projetadas para aumentar a eficiência e a lucratividade do seu negócio de forma inteligente'"
+            >
+            </p>
         </div>
         <div class="flex justify-center mt-8">
             <button class="rounded-full bg-indigo-600 hover:bg-indigo-500 duration-300 px-6 py-2" @click="contact_modal = true">
-                <p class="text-sm text-white font-semibold">Falar com Especialista</p>
+                <p class="text-sm text-white font-semibold" x-text="language == 'en' ? 'Speak to an Expert' : 'Falar com Especialista'"></p>
             </button>
         </div>
         <div class="mt-32 lg:mt-52 mb-8 space-y-8">
-            <p class="text-center text-gray-800">Parceiros que confiam em nosso trabalho</p>
+            <p class="text-center text-gray-800" x-text="language == 'en' ? 'Partners who trust our work' : 'Parceiros que confiam em nosso trabalho'"></p>
             <div class="flex lg:flex-row sm:flex-col justify-center items-center gap-16">
                 <div class="flex sm:flex-row flex-col items-center gap-16">
                     <img class="w-24" src="static/img/empresa1.png" loading="lazy" alt="">
@@ -128,12 +151,12 @@
         <img class="bottom-0 left-1/2 -z-10 absolute max-w-none h-full translate-x-[-50%]" src="static/img/background.jpg" loading="lazy" width="2245" height="1636" alt="">
         <div class="w-[90%] xl:w-[80%] mx-auto space-y-12 sm:space-y-16">
             <div class="max-w-5xl text-white xl:text-center xl:mx-auto space-y-4">
-                <p class="text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight">Todas as soluções que sua empresa necessita</p>
-                <p class="sm:text-lg">Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes</p>
+                <p class="text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight" x-text="language == 'en' ? 'All the solutions your company needs' : 'Todas as soluções que sua empresa necessita'"></p>
+                <p class="sm:text-lg" x-text="language == 'en' ? 'Discover how our approaches can provide valuable insights and enable smarter decisions' : 'Descubra como nossas abordagens podem proporcionar insights valiosos e permitir decisões mais inteligentes'"></p>
             </div>
             <div class="grid grid-cols-1 xl:grid-cols-5 items-center">
                 <div class="max-xl:hidden col-span-2 flex flex-col">
-                    <template x-for="intelligence in intelligences" hidden>
+                    <template x-for="intelligence in (language == 'en' ? intelligences.english : intelligences.portuguese)" hidden>
                         <button
                             :class="intelligence.title == selected_intelligence.title ? 'bg-white/20 ring-1 ring-inset ring-white/10' : 'hover:bg-white/10'"
                             class="text-left rounded-l-xl duration-300 p-8 space-y-2"
@@ -147,7 +170,7 @@
                 <div class="xl:hidden flex flex-col rounded-t-xl bg-white/20 p-4 space-y-4">
                     <p class="sm:text-lg text-center text-white font-semibold tracking-tight">Selecione uma das opções abaixo</p>  
                     <div class="flex justify-center items-center space-x-4">
-                        <template x-for="(intelligence, index) in intelligences" hidden>
+                        <template x-for="(intelligence, index) in (language == 'en' ? intelligences.english : intelligences.portuguese)" hidden>
                             <button @click="selected_intelligence = intelligence">
                                 <img
                                     :class="{ 'border border-white': intelligence.title == selected_intelligence.title }"
@@ -177,13 +200,13 @@
     <!-- Development -->
     <div class="w-[90%] xl:w-[80%] py-20 sm:py-32 mx-auto space-y-12 sm:space-y-16" id="development">
         <div class="max-w-4xl xl:text-center xl:mx-auto space-y-4">
-            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Passos para criação da inteligência</p>
-            <p class="sm:text-lg text-gray-500">O projeto é desenvolvido através de quatro etapas estratégicas, fundamentadas na metodologia CRISP-DM, garantindo tanto o progresso fluído quanto a qualidade através do compromisso conjunto</p>
+            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight" x-text="language == 'en' ? 'Steps to creating intelligence' : 'Passos para criação da inteligência'"></p>
+            <p class="sm:text-lg text-gray-500" x-text="language == 'en' ? 'The project is developed through four strategic stages, based on the CRISP-DM methodology, ensuring both fluid progress and quality through joint commitment' : 'O projeto é desenvolvido através de quatro etapas estratégicas, fundamentadas na metodologia CRISP-DM, garantindo tanto o progresso fluído quanto a qualidade através do compromisso conjunto'"></p>
         </div>
         <div class="flex flex-wrap">
             <div class="flex flex-wrap w-full">
                 <div class="md:w-1/2 lg:w-2/5 md:py-6 md:pr-10">
-                    <template x-for="(development, index) in developments" :key="index" hidden>
+                    <template x-for="(development, index) in language == 'en' ? developments.english : developments.portuguese" :key="index" hidden>
                         <div :class="{ 'pb-12': index != 3 }" class="relative flex pb-12">
                             <div class="absolute inset-0 flex justify-center items-center w-10 h-full" x-show="index != 3" x-cloak>
                                 <div class="w-1 h-full bg-gray-200 pointer-events-none"></div>
@@ -209,11 +232,11 @@
         <div class="max-w-7xl px-4 mx-auto">
             <div class="max-w-lg mx-auto">
                 <div class="text-center text-white tracking-tight space-y-4">
-                    <p class="text-3xl sm:text-4xl font-medium">Queremos te conhecer</p>
-                    <p class="text-lg">É hora de utilizar a matemática para enriquecer sua tomada de decisão e reduzir suas chances de errar</p>
+                    <p class="text-3xl sm:text-4xl font-medium" x-text="language == 'en' ? 'We want to get to know you' : 'Queremos te conhecer'"></p>
+                    <p class="text-lg" x-text="language == 'en' ? `It's time to use mathematics to enrich your decision making and reduce your chances of making mistakes` : 'É hora de utilizar a matemática para enriquecer sua tomada de decisão e reduzir suas chances de errar'"></p>
                 </div>
                 <button class="flex w-fit rounded-full bg-white hover:bg-gray-100 duration-300 px-6 py-2 mx-auto mt-8" @click="contact_modal = true">
-                    <p class="text-sm text-gray-800 font-semibold">Falar com Especialista</p>
+                    <p class="text-sm text-gray-800 font-semibold" x-text="language == 'en' ? 'Speak to an Expert' : 'Falar com Especialista'"></p>
                 </button>
             </div>
         </div>
@@ -222,11 +245,11 @@
     <!-- Blog -->
     <div class="w-[90%] xl:w-[80%] py-20 sm:py-32 mx-auto space-y-12 sm:space-y-16" id="blog">
         <div class="max-w-2xl xl:text-center xl:mx-auto space-y-4">
-            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Acompanhe nosso blog</p>
-            <p class="sm:text-lg text-gray-500">Explore ainda mais escolhendo um dos artigos abaixo e descubra tudo sobre machine learning e como podemos impulsionar o seu negócio</p>
+            <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight" x-text="language == 'en' ? 'Follow our blog' : 'Acompanhe nosso blog'"></p>
+            <p class="sm:text-lg text-gray-500" x-text="language == 'en' ? 'Explore even more by choosing one of the articles below and discover everything about machine learning and how we can boost your business' : 'Explore ainda mais escolhendo um dos artigos abaixo e descubra tudo sobre machine learning e como podemos impulsionar o seu negócio'"></p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 sm:gap-8">
-            <template x-for="(post, index) in posts" hidden>
+            <template x-for="(post, index) in language == 'en' ? posts.english : posts.portuguese" hidden>
                 <div class="flex flex-col border rounded-lg bg-white shadow-sm">
                     <img class="w-full h-64 lg:h-80 rounded-t-lg object-center object-cover" :src="'static/img/blog' + index + '.avif'" loading="lazy" alt="">
                     <div class="flex flex-col flex-1 p-6">
@@ -234,7 +257,7 @@
                             <p class="text-xl text-gray-800 font-semibold tracking-tight" x-text="post.title"></p>
                             <p class="text-gray-500 mt-2 mb-4" x-text="post.description"></p>
                             <a class="flex items-center w-fit text-sm text-indigo-600 hover:text-indigo-500 font-medium rounded duration-300 gap-1" :href="post.url">
-                                Ver detalhes
+                                <p x-text="language == 'en' ? 'See details' : 'Ver detalhes'"></p>
                                 <svg class="mt-0.5 size-4" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M5 12h14"></path>
                                     <path d="M12 5l7 7-7 7"></path>
@@ -256,14 +279,14 @@
     </div>
 
     <!-- FAQ -->
-    <div class="bg-gray-50 pt-20 sm:pt-32" id="faq">
+    <div class="bg-gray-100 pt-20 sm:pt-32" id="faq">
         <div class="w-[90%] xl:max-w-7xl mx-auto space-y-12 sm:space-y-16">
             <div class="max-w-2xl space-y-4">
-                <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight">Perguntas frequentes</p>
-                <p class="sm:text-lg text-gray-500">Aqui estão algumas respostas detalhadas para dúvidas mais específicas que você ainda possa ter sobre este assunto</p>
+                <p class="text-3xl text-gray-800 sm:text-[2.5rem] font-semibold tracking-tight" x-text="language == 'en' ? 'Frequently asked questions' : 'Perguntas frequentes'"></p>
+                <p class="sm:text-lg text-gray-500" x-text="language == 'en' ? 'Here are some detailed answers to more specific questions you may still have about this topic' : 'Aqui estão algumas respostas detalhadas para dúvidas mais específicas que você ainda possa ter sobre este assunto'"></p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <template x-for="question in questions" hidden>
+                <template x-for="question in language == 'en' ? questions.english : questions.portuguese" hidden>
                     <div class="space-y-2">
                         <p class="text-lg text-gray-800 font-medium tracking-tight" x-text="question.title"></p>
                         <p class="text-gray-500" x-text="question.description"></p>
@@ -274,23 +297,23 @@
     </div>
 
     <!-- Footer -->
-    <div class="bg-gray-50 pt-12 sm:pt-16">
+    <div class="bg-gray-100 pt-12 sm:pt-16">
         <div class="w-[90%] xl:max-w-7xl divide-y mx-auto space-y-12 sm:space-y-16">
             <div class="flex flex-col items-center gap-8">
                 <img class="h-10" src="static/img/logo.png" loading="lazy" alt="">
                 <div class="flex max-sm:flex-col gap-8">
                     <div class="flex justify-center gap-8">
-                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#solutions">Soluções</a>
-                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#development">Desenvolvimento</a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#solutions" x-text="language == 'en' ? 'Solutions' : 'Soluções'"></a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#development" x-text="language == 'en' ? 'Development' : 'Desenvolvimento'"></a>
                     </div>
                     <div class="flex justify-center gap-8">
-                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#blog">Blog</a>
-                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#faq">Dúvidas</a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#blog" x-text="language == 'en' ? 'Blog' : 'Blog'"></a>
+                        <a class="flex-1 text-sm text-gray-500 hover:text-indigo-600 font-medium tracking-wide duration-300 px-4 py-2" href="#faq" x-text="language == 'en' ? 'Faq' : 'Dúvidas'"></a>
                     </div>
                 </div>
             </div>
             <div class="flex max-md:flex-col-reverse justify-between items-center py-12 gap-8">
-                <p class="text-sm text-center text-gray-500">Copyright © 2024 Vazfy. Todos os direitos reservados</p>
+                <p class="text-sm text-center text-gray-500" x-text="language == 'en' ? 'Copyright © 2024 Vazfy. All rights reserved' : 'Copyright © 2024 Vazfy. Todos os direitos reservados' "></p>
                 <div class="flex items-center gap-8">
                     <a href="">
                         <svg class="text-gray-500 hover:-translate-y-0.5 duration-500 size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -329,12 +352,12 @@
             @mousedown.outside="contact_modal = false"
         >
             <div class="text-center space-y-1">
-                <p class="text-2xl text-gray-800 font-semibold tracking-tight">Informe seus dados</p>
-                <p class="text-gray-500">Vamos utilizá-los para avaliar seu perfil</p>
+                <p class="text-2xl text-gray-800 font-semibold tracking-tight" x-text="language == 'en' ? 'Enter your data' : 'Informe seus dados'"></p>
+                <p class="text-gray-500" x-text="language == 'en' ? 'We will use them to evaluate your profile' : 'Vamos utilizá-los para avaliar seu perfil'"></p>
             </div>
             <form class="text-sm text-gray-800" @submit.prevent="send_contact()">
                 <div class="mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="name">Qual é o seu nome?</label>
+                    <label class="text-sm text-gray-800 font-medium" for="name" x-text="language == 'en' ? 'What is your name?' : 'Qual é o seu nome?'"></label>
                     <input
                         class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
                         type="text"
@@ -345,7 +368,7 @@
                     />
                 </div>
                 <div class="mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="company">Qual o nome da sua empresa?</label>
+                    <label class="text-sm text-gray-800 font-medium" for="company" x-text="language == 'en' ? 'What is the name of your company?' : 'Qual o nome da sua empresa?'"></label>
                     <input
                         class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
                         type="text"
@@ -356,7 +379,7 @@
                     />
                 </div>
                 <div class="mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="email">Coloque um email para contato</label>
+                    <label class="text-sm text-gray-800 font-medium" for="email" x-text="language == 'en' ? 'Enter a contact email' : 'Coloque um email para contato'"></label>
                     <input
                         class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
                         type="email"
@@ -367,7 +390,7 @@
                     />
                 </div>
                 <div class="mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="phone">Coloque um telefone para contato</label>
+                    <label class="text-sm text-gray-800 font-medium" for="phone" x-text="language == 'en' ? 'Provide a contact phone number' : 'Coloque um telefone para contato'"></label>
                     <input
                         class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
                         type="text"
@@ -378,14 +401,14 @@
                     />
                 </div>
                 <div class="relative mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="employees">Quantidade de funcionarios?</label>
+                    <label class="text-sm text-gray-800 font-medium" for="employees" x-text="language == 'en' ? 'Number of employees?' : 'Quantidade de funcionarios?'"></label>
                     <select
                         class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
                         id="employees"
                         x-model="contact.employees"
                         required
                     >
-                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="" disabled selected x-text="language == 'en' ? 'Select an option' : 'Selecione uma opção'"></option>
                         <option value="0-5">0 - 5</option>
                         <option value="6-25">6 - 25</option>
                         <option value="26-100">26 - 100</option>
@@ -397,19 +420,19 @@
                     </svg>
                 </div>
                 <div class="relative mt-4 space-y-2">
-                    <label class="text-sm text-gray-800 font-medium" for="solution">Qual solução tem interesse?</label>
+                    <label class="text-sm text-gray-800 font-medium" for="solution" x-text="language == 'en' ? 'Which solution are you interested in?' : 'Qual solução tem interesse?'"></label>
                     <select 
                         class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
                         id="solution"
                         x-model="contact.solution"
                         required
                     >
-                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="" disabled selected x-text="language == 'en' ? 'Select an option' : 'Selecione uma opção'"></option>
                         <option value="MediaMax">MediaMax</option>
                         <option value="LeadPredictor">LeadPredictor</option>
                         <option value="BasketBoost">BasketBoost</option>
                         <option value="ChurnPredict">ChurnPredict</option>
-                        <option value="personalizado">Personalizado</option>
+                        <option value="personalizado" x-text="language == 'en' ? 'Custom' : 'Personalizado'"></option>
                     </select>
                     <svg class="top-7 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -419,7 +442,7 @@
                     class="w-full rounded bg-indigo-600 hover:bg-indigo-500 duration-300 p-2 mt-6"
                     type="submit"
                 >
-                    <p class="text-sm text-white font-semibold tracking-wide">Enviar</p>
+                    <p class="text-sm text-white font-semibold tracking-wide" x-text="language == 'en' ? 'Submit' : 'Enviar'"></p>
                 </button>
             </form>
         </div>
@@ -436,8 +459,8 @@
             </svg>
         </div>
         <div class="p-4">
-            <p class="text-emerald-500 font-semibold">Formulario enviado!</p>
-            <p class="text-sm text-gray-500">Entraremos em contato o mais breve possível</p>
+            <p class="text-emerald-500 font-semibold" x-text="language == 'en' ? 'Form sent!' : 'Formulário enviado!'"></p>
+            <p class="text-sm text-gray-500" x-text="language == 'en' ? 'We will contact you as soon as possible' : 'Entraremos em contato o mais breve possível'"></p>
         </div>
     </div>
 
