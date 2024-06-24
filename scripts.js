@@ -348,27 +348,13 @@ document.addEventListener('alpine:init', () => {
         },
 
         send_contact() {
+            this.contact.user_id = document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')) ? document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')).split('=')[1] : undefined
             this.contact.device = window.innerWidth <= 640 ? 'Mobile' : window.innerWidth <= 1024 ? 'Tablet' : 'Desktop'
             this.contact.date = new Date().toISOString().split('T')[0]
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
-                    this.contact.latitude = position.coords.latitude
-                    this.contact.longitude = position.coords.longitude
-                    this.contact.accuracy = position.coords.accuracy
-                    this.sendToServer()
-                }, (error) => {
-                    console.error('Erro ao obter a localização:', error)
-                    this.sendToServer()
-                })
-            } else {
-                console.log('Geolocalização não é suportada pelo seu navegador.')
-                this.sendToServer()
-            }
         },
         
         sendToServer() {
-            fetch('https://script.google.com/macros/s/AKfycbxkZxq0PAQgBSVTdS2o-6wgtL5fxK618Rm7x1-3eWIefo0dBDGXQb6MTgag1ZsD1zaMvQ/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbwLQzuy219r1hphKSBmX8Db-05RHv4ymdjgBDExYea5HwE6UqXiNmhHw99l1Jk55JDdUg/exec', {
                 method: 'POST',
                 body: JSON.stringify(this.contact),
             })
@@ -379,7 +365,6 @@ document.addEventListener('alpine:init', () => {
                 this.message_modal = false
             }, 5000)
         },
-        
 
     }))
 })
