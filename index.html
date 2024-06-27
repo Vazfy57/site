@@ -62,10 +62,10 @@
                 </template>
             </div>
             <div class="max-lg:hidden flex items-center gap-4">
-                <button @click="language = 'pt'">
+                <button @click="language = 'pt', selected_intelligence = intelligences.portuguese[0]">
                     <img class="size-11" src="static/img/brasil.png" loading="lazy" alt="">
                 </button>
-                <button @click="language = 'en'">
+                <button @click="language = 'en', selected_intelligence = intelligences.english[0]">
                     <img class="size-8" src="static/img/estados-unidos.png" loading="lazy" alt="">
                 </button>
             </div>
