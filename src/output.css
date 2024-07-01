@@ -1223,6 +1223,10 @@ video {
   padding: 0.25rem;
 }
 
+.p-12 {
+  padding: 3rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1535,6 +1539,11 @@ video {
   .max-md\:flex-col-reverse {
     flex-direction: column-reverse;
   }
+
+  .max-md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 @media not all and (min-width: 640px) {
@@ -1621,8 +1630,8 @@ video {
     width: 50%;
   }
 
-  .md\:w-\[70\%\] {
-    width: 70%;
+  .md\:w-\[80\%\] {
+    width: 80%;
   }
 
   .md\:w-\[90\%\] {
@@ -1707,8 +1716,8 @@ video {
     display: none;
   }
 
-  .xl\:w-\[50\%\] {
-    width: 50%;
+  .xl\:w-\[60\%\] {
+    width: 60%;
   }
 
   .xl\:w-\[80\%\] {
