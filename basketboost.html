@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/output.css" rel="stylesheet">
+    <script defer src="static/js/basketboost.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.0/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50" x-data="alpine">
+
+    <div class="flex items-center w-[80%] bg-white p-8 mx-auto space-x-16">
+        <a class="flex items-center text-gray-800 gap-4">
+            <svg class="text-white rounded-full bg-indigo-500 p-2 size-10" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="text-xl font-medium">Vazfy</span>
+        </a>
+        <nav class="flex items-center gap-8">
+            <a class="text-gray-500 hover:text-indigo-600 rounded hover:bg-gray-50 duration-300 px-4 py-1" href="#">MediaMax</a>
+            <a class="text-gray-500 hover:text-indigo-600 rounded hover:bg-gray-50 duration-300 px-4 py-1" href="#">LeadPredictor</a>
+            <a class="text-gray-500 hover:text-indigo-600 rounded hover:bg-gray-50 duration-300 px-4 py-1" href="#">BasketBoost</a>
+            <a class="text-gray-500 hover:text-indigo-600 rounded hover:bg-gray-50 duration-300 px-4 py-1" href="#">ChurnPredict</a>
+            <a class="text-gray-500 hover:text-indigo-600 rounded hover:bg-gray-50 duration-300 px-4 py-1" href="#">MixPersona</a>
+        </nav>
+    </div>
+
+    <div class="w-[80%] bg-white p-8 mx-auto">
+        <div class="border rounded divide-x py-8">
+            <div class="grid grid-cols-3 divide-x">
+                <div class="space-y-4">
+                    <p class="text-lg text-center text-gray-800 font-medium">Produtos</p>
+                    <div class="px-8 space-y-2">
+                        <template x-for="(product, index) in products" :key="index" hidden>
+                            <button 
+                                :class="{ 'text-indigo-600 bg-gray-50': selected_products.includes(product) }"
+                                class="flex items-center w-full text-gray-600 text-start hover:text-indigo-600 duration-300 px-4 py-1 gap-4" 
+                                @click="add_product(product)"
+                            >
+                                <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
+                                <p x-text="product"></p>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <p class="text-lg text-center text-gray-800 font-medium">Carrinho de Compras</p>
+                        <div class="px-8 space-y-2">
+                            <template x-for="(product, index) in selected_products" :key="index" hidden>
+                                <div class="flex items-center gap-4">
+                                    <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
+                                    <p x-text="product"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button 
+                            class="rounded bg-indigo-600 hover:bg-indigo-500 duration-300 px-9 py-1.5"
+                            @click="generate_recommended_products()"
+                        >
+                            <p class="text-sm text-white font-medium">Confirmar</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-lg text-center text-gray-800 font-medium">Recomendações</p>
+                    <div class="px-8 space-y-2">
+                        <template x-for="(product, index) in recommended_products" :key="index" hidden>
+                            <div class="flex items-center gap-4">
+                                <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
+                                <p x-text="product"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
