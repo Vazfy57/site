@@ -1,6 +1,10 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('alpine', () => ({
 
+        sidebar: false,
+        selected_products: [],
+        recommended_products: [],
+        language: '',
         products: [
             'Arroz',
             'Feijão',
@@ -15,8 +19,6 @@ document.addEventListener('alpine:init', () => {
             'Sorvete',
             'Queijo',
         ],
-        selected_products: [],
-        recommended_products: [],
 
         add_product(product) {
             let index = this.selected_products.indexOf(product);
