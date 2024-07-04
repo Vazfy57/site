@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="static/img/logo.png">
-    <title>Vazfy - MediaMax</title>
+    <title>Vazfy - ChurnPredict</title>
     <!-- Tailwindcss -->
     <link href="src/output.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -13,10 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
     <!-- AlpineJS -->
-    <script defer src="static/js/mediamax.js"></script>
+    <script defer src="static/js/mixpersona.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
-    <!-- ChartJS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
     <style>
         * {
             font-family: "Inter", sans-serif;
@@ -39,7 +39,7 @@
     </style>
 </head>
 <body class="bg-gray-100" x-data="alpine">
-    <div class="md:w-[90%] xl:w-[80%] divide-y bg-white mx-auto">
+    <div class="md:w-[90%] xl:w-[80%] bg-white mx-auto">
 
         <!-- Navbar -->
         <div class="flex lg:justify-center max-lg:justify-between items-center p-8 gap-8">
@@ -87,30 +87,39 @@
             <div class="z-40 fixed inset-0 bg-black bg-opacity-30 size-full" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
         </div>
 
-        <!-- Big Numbers -->
-        <div class="grid lg:grid-cols-2 2xl:grid-cols-4 2xl:divide-x max-lg:divide-y">
-            <template x-for="(big_number, index) in big_numbers" :key="index" hidden>
-                <div class="p-6 space-y-1">
-                    <p class="text-sm text-gray-500 font-medium" x-text="big_number.title"></p>
-                    <div class="flex justify-between items-center">
-                        <p class="text-2xl text-gray-800 font-semibold" x-text="big_number.value"></p>
-                        <p class="text-sm text-gray-500 font-medium"><span class="text-green-500">+55%</span> de aumento</p>
-                    </div>
+        <!-- Content -->
+        <div class="xl:w-[80%] p-8 mx-auto space-y-8">
+            <div class="space-y-2">
+                <p class="text-xl text-gray-900 font-semibold">Exemplo de Aplicação: AutoPro</p>  
+                <p class="text-gray-600">A AutoPro, uma empresa fictícia especializada na venda de produtos automotivos tanto online quanto em lojas físicas, enfrentava desafios significativos em entender e segmentar seus clientes para melhorar suas estratégias de marketing e vendas. Com uma vasta gama de produtos, que incluíam desde peças de reposição até acessórios de alto desempenho, a empresa precisava encontrar uma maneira de otimizar suas abordagens para diferentes tipos de clientes.</p>
+            </div>
+            <div class="space-y-2">
+                <p class="text-xl text-gray-900 font-semibold">O Problema</p>
+                <p class="text-gray-600">A AutoPro observava uma grande variação no comportamento de compra de seus clientes. Alguns clientes realizavam compras frequentes, mas de baixo valor, enquanto outros faziam poucas compras, mas com valores muito altos. A empresa não conseguia identificar claramente quais grupos de clientes eram mais valiosos a longo prazo e como deveria direcionar seus esforços de marketing para cada grupo. Isso resultava em campanhas de marketing pouco eficazes e uma alocação inadequada de recursos.</p>
+            </div>
+            <div class="space-y-2">
+                <p class="text-xl text-gray-900 font-semibold">A Solução</p>
+                <p class="text-gray-600">Decidida a resolver esse problema, a AutoPro implementou uma solução de clusterização de clientes usando machine learning. Com base nos dados coletados de suas plataformas online e físicas, a empresa segmentou seus clientes em três grupos distintos:</p>
+            </div>
+            <div id="chart"></div>
+            <p class="text-2xl text-gray-900 font-semibold">Estratégias criadas para cada Perfil</p>
+            <div class="grid grid-cols-3 gap-8">
+                <div class="border hover:border-indigo-600 rounded bg-gray-50 shadow-sm duration-300 p-8"> 
+                    <p class="text-lg text-center text-gray-900 font-medium">Clientes de curto prazo com gastos altos</p>
+                    <p class="mt-8 mb-4"><strong>Online:</strong> Campanhas focadas em promoções e ofertas especiais. Programa de fidelidade para recompensar compras frequentes e grandes valores.</p>
+                    <p><strong>Física:</strong> Promoções especiais e eventos exclusivos para visitas frequentes e aumento do valor das compras.</p>
                 </div>
-            </template>
-        </div>
-
-        <!-- Charts -->
-        <div class="grid xl:grid-cols-2 max-xl:divide-y">
-            <template x-for="(chart, index) in charts_data" :key="index" hidden>
-                <div class="xl:border-b p-6 space-y-6">
-                    <canvas class="max-w-full"></canvas>
-                    <div>
-                        <p class="text-gray-800 font-semibold" x-text="chart.title"></p>
-                        <p class="text-sm text-gray-500 font-medium" x-text="chart.subtitle"></p>
-                    </div>
+                <div class="border hover:border-indigo-600 rounded bg-gray-50 shadow-sm duration-300 p-8">
+                    <p class="text-lg text-center text-gray-900 font-medium">Clientes de médio a longo prazo com gastos moderados</p>
+                    <p class="mt-8 mb-4"><strong>Online:</strong> Conteúdo personalizado e recomendações de produtos. Campanhas de e-mail marketing com dicas e novos produtos.</p>
+                    <p><strong>Física:</strong> Workshops e eventos educacionais sobre manutenção e melhoria de veículos.</p>
                 </div>
-            </template>
+                <div class="border hover:border-indigo-600 rounded bg-gray-50 shadow-sm duration-300 p-8">
+                    <p class="text-lg text-center text-gray-900 font-medium">Clientes de longo prazo com gastos muito altos</p>
+                    <p class="mt-8 mb-4"><strong>Online:</strong> Atendimento exclusivo com consultor especializado. Campanhas direcionadas com produtos premium e lançamentos exclusivos.</p>
+                    <p><strong>Física:</strong> Atendimento VIP com áreas exclusivas e acesso antecipado a novos produtos.</p>
+                </div>
+            </div>
         </div>
 
     </div>
