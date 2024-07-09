@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
     <!-- AlpineJS -->
     <script defer src="static/js/basketboost.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.13.10/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
     <style>
         * {
@@ -36,99 +37,142 @@
         }
     </style>
 </head>
-<body class="bg-gray-100" x-data="alpine">
-    <div class="md:w-[90%] xl:w-[80%] bg-white mx-auto">
+<body class="flex" x-data="alpine">
 
-        <!-- Navbar -->
-        <div class="flex lg:justify-center max-lg:justify-between items-center p-8 gap-8">
-            <a class="shrink-0" href="/">
-                <img class="w-24" src="static/img/logo.png" loading="lazy" alt="">
-            </a>
-            <div class="max-lg:hidden flex items-center gap-8">
-                <a class="text-sm text-gray-600 hover:text-indigo-600 rounded hover:bg-gray-100 duration-300 px-4 py-1" href="mediamax">MediaMax</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 rounded hover:bg-gray-100 duration-300 px-4 py-1" href="">LeadPredictor</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 rounded hover:bg-gray-100 duration-300 px-4 py-1" href="basketboost">BasketBoost</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 rounded hover:bg-gray-100 duration-300 px-4 py-1" href="">ChurnPredict</a>
-                <a class="text-sm text-gray-600 hover:text-indigo-600 rounded hover:bg-gray-100 duration-300 px-4 py-1" href="mixpersona">MixPersona</a>
+    <div class="max-xl:hidden flex flex-col justify-between w-72 h-screen bg-[#252525] px-3 py-6 gap-6">
+        <div class="space-y-6">
+            <p class="text-2xl text-white font-bold px-3">Vazfy</p>
+            <div>
+                <p class="text-xs text-white/50 font-medium p-3">Navegação</p>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href="mediamax"
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                    </svg>
+                    <p class="text-sm font-semibold">MediaMax</p>
+                </a>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href=""
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                    </svg>
+                    <p class="text-sm font-semibold">LeadPredictor</p>
+                </a>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href="basketboost"
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg>
+                    <p class="text-sm font-semibold">BasketBoost</p>
+                </a>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href=""
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>  
+                    <p class="text-sm font-semibold">ChurnPredict</p>
+                </a>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href="mixpersona"
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z" />
+                    </svg>
+                    <p class="text-sm font-semibold">MixPersona</p>
+                </a>
             </div>
-            <button class="lg:hidden" @click="sidebar = true">
-                <svg class="text-gray-800 size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                </svg>
-            </button>
-            <div :class="{ '-translate-x-64': sidebar }" class="top-0 -right-64 z-50 fixed w-64 h-full bg-white duration-500 p-8 space-y-3">
-                <div class="flex justify-between items-center">
-                    <p class="text-3xl text-gray-800 font-semibold">Menu</p>
-                    <button @click="sidebar = false">
-                        <svg class="text-gray-800 size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-col">
-                    <a class="text-sm text-gray-600 py-3" href="mediamax" @click="sidebar = false">MediaMax</a>
-                    <a class="text-sm text-gray-600 py-3" href="" @click="sidebar = false">LeadPredictor</a>
-                    <a class="text-sm text-gray-600 py-3" href="basketboost" @click="sidebar = false">BasketBoost</a>
-                    <a class="text-sm text-gray-600 py-3" href="" @click="sidebar = false">ChurnPredict</a>
-                    <a class="text-sm text-gray-600 py-3" href="" @click="sidebar = false">MixPersona</a>
-                    <div class="h-0 border-b my-3"></div>
-                    <div class="flex items-center gap-4">
-                        <button @click="language = 'pt', sidebar = false">
-                            <img class="size-11" src="static/img/brasil.png" loading="lazy" alt="">
-                        </button>
-                        <button @click="language = 'en', sidebar = false">
-                            <img class="size-8" src="static/img/estados-unidos.png" loading="lazy" alt="">
-                        </button>
-                    </div>  
-                </div>
+            <div>
+                <p class="text-xs text-white/50 font-medium p-3">Conta</p>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href=""
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <p class="text-sm font-semibold">Configurações</p>
+                </a>
+                <a
+                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    href="/"
+                >
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                    </svg>
+                    <p class="text-sm font-semibold">Sair</p>
+                </a>
             </div>
-            <div class="z-40 fixed inset-0 bg-black bg-opacity-30 size-full" x-show="sidebar" @click="sidebar = false" x-transition.opacity.duration.500ms x-cloak></div>
         </div>
-    
-        <!-- Recommendation -->
-        <div class="overflow-auto p-8">
-            <div class="min-w-[700px] border rounded divide-x overflow-auto py-8">
-                <div class="grid grid-cols-3 divide-x">
-                    <div class="space-y-4">
-                        <p class="text-lg text-center text-gray-800 font-medium">Produtos</p>
-                        <div class="px-8 space-y-2">
-                            <template x-for="(product, index) in products" :key="index" hidden>
-                                <button 
-                                    :class="{ 'text-indigo-600 bg-gray-50': selected_products.includes(product) }"
-                                    class="flex items-center w-full text-gray-600 text-start hover:text-indigo-600 duration-300 px-4 py-1 gap-4" 
-                                    @click="add_product(product)"
-                                >
-                                    <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
-                                    <p x-text="product"></p>
-                                </button>
-                            </template>
-                        </div>
+        <div class="rounded-lg bg-[#393939] p-4">
+            <div class="rounded-full bg-[#252525] p-3 mx-auto size-fit">
+                <svg class="text-white size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                </svg>
+            </div>
+            <p class="text-center text-white font-semibold my-2">Se interessou?</p>
+            <p class="text-sm text-center text-white/70 mb-4">Envie seu contato para que possamos conhecê-lo(a) melhor</p>
+            <button class="w-full rounded-lg bg-blue-600 hover:bg-blue-500 duration-300 p-2" @click="contact_modal = true">
+                <p class="text-sm text-white font-semibold">Entrar em Contato</p>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex-1 h-screen bg-gray-100 overflow-auto p-8 space-y-12">
+        <div class="space-y-4">
+            <p class="text-xl text-gray-800 font-bold">Demonstração do BasketBoost</p>
+            <div class="grid xl:grid-cols-2 gap-6">
+                <div class="rounded-lg bg-indigo-100 p-6 space-y-2">
+                    <div class="rounded-lg bg-indigo-600 p-2 size-fit">
+                        <svg class="text-white size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
                     </div>
-                    <div class="flex flex-col justify-between space-y-4">
-                        <div class="space-y-4">
-                            <p class="text-lg text-center text-gray-800 font-medium">Carrinho de Compras</p>
-                            <div class="px-8 space-y-2">
-                                <template x-for="(product, index) in selected_products" :key="index" hidden>
-                                    <div class="flex items-center gap-4">
-                                        <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
-                                        <p x-text="product"></p>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
+                    <p class="text-gray-800 font-bold">Isso precisa ficar foda</p>
+                    <p class="text-sm text-gray-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam incidunt tempora nesciunt. Excepturi fugit rerum corrupti amet quos commodi esse, quibusdam debitis ea voluptatibus, voluptatum nemo nostrum. Libero, inventore nemo!</p>
+                </div>
+                <div class="rounded-lg bg-orange-100 p-6 space-y-2">
+                    <div class="rounded-lg bg-orange-600 p-2 size-fit">
+                        <svg class="text-white size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-800 font-bold">Isso precisa ficar foda</p>
+                    <p class="text-sm text-gray-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam incidunt tempora nesciunt. Excepturi fugit rerum corrupti amet quos commodi esse, quibusdam debitis ea voluptatibus, voluptatum nemo nostrum. Libero, inventore nemo!</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-lg bg-white overflow-auto py-8">
+            <div class="grid grid-cols-3 min-w-[800px] divide-x overflow-auto">
+                <div class="space-y-4">
+                    <p class="text-lg text-center text-gray-800 font-semibold">Produtos</p>
+                    <div class="px-8 space-y-2">
+                        <template x-for="(product, index) in products" :key="index" hidden>
                             <button 
-                                class="rounded bg-indigo-600 hover:bg-indigo-500 duration-300 px-8 py-2"
-                                @click="generate_recommended_products()"
+                                :class="{ 'text-indigo-600 bg-gray-100 rounded-lg': selected_products.includes(product) }"
+                                class="flex items-center w-full text-gray-600 text-start hover:text-indigo-600 duration-300 px-4 py-1 gap-4" 
+                                @click="add_product(product)"
                             >
-                                <p class="text-sm text-white font-medium">Confirmar</p>
+                                <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
+                                <p x-text="product"></p>
                             </button>
-                        </div>
+                        </template>
                     </div>
+                </div>
+                <div class="flex flex-col justify-between gap-4">
                     <div class="space-y-4">
-                        <p class="text-lg text-center text-gray-800 font-medium">Recomendações</p>
+                        <p class="text-lg text-center text-gray-800 font-semibold">Carrinho de Compras</p>
                         <div class="px-8 space-y-2">
-                            <template x-for="(product, index) in recommended_products" :key="index" hidden>
+                            <template x-for="(product, index) in selected_products" :key="index" hidden>
                                 <div class="flex items-center gap-4">
                                     <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
                                     <p x-text="product"></p>
@@ -136,10 +180,152 @@
                             </template>
                         </div>
                     </div>
+                    <div class="flex justify-center">
+                        <button 
+                            class="rounded-lg bg-indigo-600 hover:bg-indigo-500 duration-300 px-8 py-2"
+                            @click="generate_recommended_products()"
+                        >
+                            <p class="text-sm text-white font-semibold">Confirmar</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-lg text-center text-gray-800 font-semibold">Recomendações</p>
+                    <div class="px-8 space-y-2">
+                        <template x-for="(product, index) in recommended_products" :key="index" hidden>
+                            <div class="flex items-center gap-4">
+                                <img class="w-5" :src="'static/img/basketboost/' + product + '.png'" loading="lazy" alt="">
+                                <p x-text="product"></p>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <div
+        class="z-40 fixed inset-0 flex justify-center items-center bg-black bg-opacity-30"
+        x-show="contact_modal"
+        x-transition.opacity.duration.500ms
+        x-cloak
+    >
+        <div
+            class="max-w-md rounded bg-white p-8 mx-4 space-y-6"
+            @mousedown.outside="contact_modal = false"
+        >
+            <div class="text-center space-y-1">
+                <p class="text-2xl text-gray-800 font-semibold tracking-tight" x-text="language == 'en' ? 'Enter your data' : 'Informe seus dados'"></p>
+                <p class="text-gray-500" x-text="language == 'en' ? 'We will use them to evaluate your profile' : 'Vamos utilizá-los para avaliar seu perfil'"></p>
+            </div>
+            <form class="text-sm text-gray-800" @submit.prevent="send_contact()">
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="name" x-text="language == 'en' ? 'What is your name?' : 'Qual é o seu nome?'"></label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="name"
+                        x-model="contact.name"
+                        maxlength="50"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="company" x-text="language == 'en' ? 'What is the name of your company?' : 'Qual o nome da sua empresa?'"></label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="company"
+                        x-model="contact.company"
+                        maxlength="50"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="email" x-text="language == 'en' ? 'Enter a contact email' : 'Coloque um email para contato'"></label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="email"
+                        id="email"
+                        x-model="contact.email"
+                        maxlength="50"
+                        required
+                    />
+                </div>
+                <div class="mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="phone" x-text="language == 'en' ? 'Provide a contact phone number' : 'Coloque um telefone para contato'"></label>
+                    <input
+                        class="w-full text-sm text-gray-800 rounded shadow-sm duration-300 px-3 py-2 outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600"
+                        type="text"
+                        id="phone"
+                        x-model="contact.phone"
+                        x-mask="(99) 9 9999-9999"
+                        required
+                    />
+                </div>
+                <div class="relative mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="employees" x-text="language == 'en' ? 'Number of employees?' : 'Quantidade de funcionarios?'"></label>
+                    <select
+                        class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
+                        id="employees"
+                        x-model="contact.employees"
+                        required
+                    >
+                        <option value="" disabled selected x-text="language == 'en' ? 'Select an option' : 'Selecione uma opção'"></option>
+                        <option value="0-5">0 - 5</option>
+                        <option value="6-25">6 - 25</option>
+                        <option value="26-100">26 - 100</option>
+                        <option value="101-300">101 - 300</option>
+                        <option value="301+">301+</option>
+                    </select>
+                    <svg class="top-7 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="relative mt-4 space-y-2">
+                    <label class="text-sm text-gray-800 font-medium" for="solution" x-text="language == 'en' ? 'Which solution are you interested in?' : 'Qual solução tem interesse?'"></label>
+                    <select 
+                        class="w-full text-sm text-gray-800 rounded bg-white shadow-sm duration-300 px-3 py-2 appearance-none outline-none ring-1 ring-gray-300 ring-inset focus:ring-inset focus:ring-indigo-600" 
+                        id="solution"
+                        x-model="contact.solution"
+                        required
+                    >
+                        <option value="" disabled selected x-text="language == 'en' ? 'Select an option' : 'Selecione uma opção'"></option>
+                        <option value="MediaMax">MediaMax</option>
+                        <option value="LeadPredictor">LeadPredictor</option>
+                        <option value="BasketBoost">BasketBoost</option>
+                        <option value="ChurnPredict">ChurnPredict</option>
+                        <option value="Personalizado" x-text="language == 'en' ? 'Custom' : 'Personalizado'"></option>
+                    </select>
+                    <svg class="top-7 right-3 absolute size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <button
+                    class="w-full rounded bg-indigo-600 hover:bg-indigo-500 duration-300 p-2 mt-6"
+                    type="submit"
+                    id="contact_submit"
+                >
+                    <p class="text-sm text-white font-semibold tracking-wide" x-text="language == 'en' ? 'Submit' : 'Enviar'"></p>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div
+        :class="{ 'translate-y-36': message_modal }"
+        class="-top-28 left-1/2 z-50 fixed flex w-full max-w-md border rounded bg-white shadow-sm -translate-x-1/2 duration-500 overflow-hidden"
+    >
+        <div class="flex justify-center items-center bg-emerald-500 p-4">
+            <svg class="text-white fill-current size-6" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+            </svg>
+        </div>
+        <div class="p-4">
+            <p class="text-emerald-500 font-semibold" x-text="language == 'en' ? 'Form sent!' : 'Formulário enviado!'"></p>
+            <p class="text-sm text-gray-500" x-text="language == 'en' ? 'We will contact you as soon as possible' : 'Entraremos em contato o mais breve possível'"></p>
+        </div>
+    </div>
+
 </body>
 </html>
