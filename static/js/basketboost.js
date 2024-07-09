@@ -1,10 +1,13 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('alpine', () => ({
 
+        language: '',
         sidebar: false,
+        contact_modal: false,
+        message_modal: false,
+        contact: {},
         selected_products: [],
         recommended_products: [],
-        language: '',
         products: [
             'Arroz',
             'Feijão',
@@ -19,6 +22,24 @@ document.addEventListener('alpine:init', () => {
             'Sorvete',
             'Queijo',
         ],
+
+        send_contact() {
+            this.contact.user_id = document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')) ? document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')).split('=')[1] : undefined
+            this.contact.device = window.innerWidth <= 640 ? 'Mobile' : window.innerWidth <= 1024 ? 'Tablet' : 'Desktop'
+            this.contact.source = 'Site'
+            this.contact.date = new Date().toISOString().split('T')[0]
+        
+            fetch('https://script.google.com/macros/s/AKfycbwLQzuy219r1hphKSBmX8Db-05RHv4ymdjgBDExYea5HwE6UqXiNmhHw99l1Jk55JDdUg/exec', {
+                method: 'POST',
+                body: JSON.stringify(this.contact),
+            })
+            this.contact_modal = false
+            this.contact = {}
+            this.message_modal = true
+            setTimeout(() => {
+                this.message_modal = false
+            }, 5000)
+        },
 
         add_product(product) {
             let index = this.selected_products.indexOf(product);
