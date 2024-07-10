@@ -47,7 +47,8 @@
             <div>
                 <p class="text-xs text-white/50 font-medium p-3">Navegação</p>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    :class="window.location.href.split('/')[3] == 'mediamax' ? 'text-white bg-[#393939]' : 'text-white/70 hover:text-white hover:bg-[#393939] duration-500'"
+                    class="flex items-center rounded p-3 gap-3"
                     href="mediamax"
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -56,7 +57,8 @@
                     <p class="text-sm font-semibold">MediaMax</p>
                 </a>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    :class="window.location.href.split('/')[3] == 'leadpredictor' ? 'text-white bg-[#393939]' : 'text-white/70 hover:text-white hover:bg-[#393939] duration-500'"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href=""
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -65,7 +67,8 @@
                     <p class="text-sm font-semibold">LeadPredictor</p>
                 </a>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    :class="window.location.href.split('/')[3] == 'basketboost' ? 'text-white bg-[#393939]' : 'text-white/70 hover:text-white hover:bg-[#393939] duration-500'"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href="basketboost"
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -74,7 +77,8 @@
                     <p class="text-sm font-semibold">BasketBoost</p>
                 </a>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    :class="window.location.href.split('/')[3] == 'churnpredict' ? 'text-white bg-[#393939]' : 'text-white/70 hover:text-white hover:bg-[#393939] duration-500'"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href=""
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -83,7 +87,8 @@
                     <p class="text-sm font-semibold">ChurnPredict</p>
                 </a>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    :class="window.location.href.split('/')[3] == 'mixpersona' ? 'text-white bg-[#393939]' : 'text-white/70 hover:text-white hover:bg-[#393939] duration-500'"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href="mixpersona"
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -95,7 +100,7 @@
             <div>
                 <p class="text-xs text-white/50 font-medium p-3">Conta</p>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href=""
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -105,7 +110,7 @@
                     <p class="text-sm font-semibold">Configurações</p>
                 </a>
                 <a
-                    class="flex items-center text-white/70 hover:text-white rounded-lg hover:bg-[#393939] duration-500 p-3 gap-3"
+                    class="flex items-center text-white/70 hover:text-white rounded hover:bg-[#393939] duration-500 p-3 gap-3"
                     href="/"
                 >
                     <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -115,7 +120,7 @@
                 </a>
             </div>
         </div>
-        <div class="rounded-lg bg-[#393939] p-4">
+        <div class="rounded bg-[#393939] p-4">
             <div class="rounded-full bg-[#252525] p-3 mx-auto size-fit">
                 <svg class="text-white size-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
@@ -123,7 +128,7 @@
             </div>
             <p class="text-center text-white font-semibold my-2">Se interessou?</p>
             <p class="text-sm text-center text-white/70 mb-4">Envie seu contato para que possamos conhecê-lo(a) melhor</p>
-            <button class="w-full rounded-lg bg-blue-600 hover:bg-blue-500 duration-300 p-2" @click="contact_modal = true">
+            <button class="w-full rounded bg-blue-600 hover:bg-blue-500 duration-300 p-2" @click="contact_modal = true">
                 <p class="text-sm text-white font-semibold">Entrar em Contato</p>
             </button>
         </div>
@@ -133,8 +138,8 @@
         <div class="space-y-4">
             <p class="text-xl text-gray-800 font-bold">Demonstração do MixPersona</p>
             <div class="grid xl:grid-cols-2 gap-6">
-                <div class="rounded-lg bg-indigo-100 p-6 space-y-2">
-                    <div class="rounded-lg bg-indigo-600 p-2 size-fit">
+                <div class="rounded bg-indigo-100 p-6 space-y-2">
+                    <div class="rounded bg-indigo-600 p-2 size-fit">
                         <svg class="text-white size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                         </svg>
@@ -142,8 +147,8 @@
                     <p class="text-gray-800 font-bold">Exemplo de Aplicação</p>
                     <p class="text-sm text-gray-600">Uma empresa especializada na venda de produtos automotivos tanto online quanto em lojas físicas, enfrentava desafios significativos em entender e segmentar seus clientes para melhorar suas estratégias de marketing e vendas. Com uma vasta gama de produtos, que incluíam desde peças de reposição até acessórios de alto desempenho, a empresa precisava encontrar uma maneira de otimizar suas abordagens para diferentes tipos de clientes.</p>
                 </div>
-                <div class="rounded-lg bg-orange-100 p-6 space-y-2">
-                    <div class="rounded-lg bg-orange-600 p-2 size-fit">
+                <div class="rounded bg-orange-100 p-6 space-y-2">
+                    <div class="rounded bg-orange-600 p-2 size-fit">
                         <svg class="text-white size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                         </svg>
@@ -157,17 +162,17 @@
         <div class="space-y-4">
             <p class="text-xl text-gray-800 font-bold">Estratégias criadas para cada Perfil</p>
             <div class="grid xl:grid-cols-3 gap-6">
-                <div class="rounded-lg bg-white p-8"> 
+                <div class="rounded bg-white p-8"> 
                     <p class="text-lg text-center text-gray-800 font-medium">Clientes de curto prazo com gastos altos</p>
                     <p class="mt-8 mb-4"><strong>Online:</strong> Campanhas focadas em promoções e ofertas especiais. Programa de fidelidade para recompensar compras frequentes e grandes valores.</p>
                     <p><strong>Física:</strong> Promoções especiais e eventos exclusivos para visitas frequentes e aumento do valor das compras.</p>
                 </div>
-                <div class="rounded-lg bg-white p-8">
+                <div class="rounded bg-white p-8">
                     <p class="text-lg text-center text-gray-800 font-medium">Clientes de médio a longo prazo com gastos moderados</p>
                     <p class="mt-8 mb-4"><strong>Online:</strong> Conteúdo personalizado e recomendações de produtos. Campanhas de e-mail marketing com dicas e novos produtos.</p>
                     <p><strong>Física:</strong> Workshops e eventos educacionais sobre manutenção e melhoria de veículos.</p>
                 </div>
-                <div class="rounded-lg bg-white p-8">
+                <div class="rounded bg-white p-8">
                     <p class="text-lg text-center text-gray-800 font-medium">Clientes de longo prazo com gastos muito altos</p>
                     <p class="mt-8 mb-4"><strong>Online:</strong> Atendimento exclusivo com consultor especializado. Campanhas direcionadas com produtos premium e lançamentos exclusivos.</p>
                     <p><strong>Física:</strong> Atendimento VIP com áreas exclusivas e acesso antecipado a novos produtos.</p>
