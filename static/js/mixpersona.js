@@ -58,10 +58,9 @@ document.addEventListener('alpine:init', () => {
         send_contact() {
             this.contact.user_id = document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')) ? document.cookie.split('; ').find(cookie => cookie.startsWith('_ga=')).split('=')[1] : undefined
             this.contact.device = window.innerWidth <= 640 ? 'Mobile' : window.innerWidth <= 1024 ? 'Tablet' : 'Desktop'
-            this.contact.source = 'Site'
             this.contact.date = new Date().toISOString().split('T')[0]
         
-            fetch('https://script.google.com/macros/s/AKfycbwLQzuy219r1hphKSBmX8Db-05RHv4ymdjgBDExYea5HwE6UqXiNmhHw99l1Jk55JDdUg/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbwm0iHLbYkYD8HV0wpgJF5Uk_ZnXjmiCvOFQMQrF5xjHIG_GJStVNetW-fS3Ns_f9-8NQ/exec', {
                 method: 'POST',
                 body: JSON.stringify(this.contact),
             })
